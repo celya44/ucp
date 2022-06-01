@@ -152,3 +152,18 @@ $set['name'] = 'UCP CAS LDAP';
 $set['description'] = 'UCP CAS LDAP';
 $set['type'] = CONF_TYPE_TEXT;
 FreePBX::Config()->define_conf_setting('UCPCASLDAP',$set,true);
+
+// UCPPOLLINGDELAY
+$set['value'] = '5000';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP Polling Delay';
+$set['description'] = 'Time in ms between polling time in UCP';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPPOLLINGDELAY',$set,true);

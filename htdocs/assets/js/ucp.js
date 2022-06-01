@@ -462,7 +462,7 @@ var UCPC = Class.extend({
 			UCP.shortpoll(function() {
 				UCP.pollID = setInterval(function() {
 					UCP.shortpoll();
-				},5000);
+				},window.pollingDelay);
 				$this.callModulesByMethod("connect",username,password);
 				UCP.websocketConnect();
 			});

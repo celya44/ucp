@@ -266,6 +266,7 @@ switch($display) {
 $displayvars['language'] = $ucp->Modules->getGlobalLanguageJSON($lang);
 $displayvars['lang'] = $lang;
 $displayvars['ucpserver'] = json_encode($ucp->getServerSettings());
+$displayvars['pollingDelay'] = $ucp->FreePBX->Config->get("UCPPOLLINGDELAY");
 $displayvars['modules'] = json_encode($active_modules);
 $displayvars['gScripts'] = $ucp->getScripts(false,$compressed);
 $displayvars['scripts'] = $ucp->Modules->getGlobalScripts(false,$compressed);
