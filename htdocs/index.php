@@ -27,6 +27,10 @@ try {
 ob_end_clean();
 //TIME: 0.069080114364624
 
+if ( $ucp->FreePBX->Config->get("UCPCASENABLE") && file_exists(__DIR__ . '/includes/CAS.php') ){
+    require(__DIR__ . '/includes/CAS.php');
+}
+
 $displaySaveTemplate = false;
 $templateId = false;
 if(isset($_REQUEST['unlockkey']) && !empty($_REQUEST['unlockkey'])) {
