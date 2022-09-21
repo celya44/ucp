@@ -92,3 +92,78 @@ $set['name'] = 'UCP Session Timeout';
 $set['description'] = 'The number of days a session token will be valid for. Clear this setting if you want tokens to last forever (Not Recommended)';
 $set['type'] = CONF_TYPE_TEXT;
 FreePBX::Config()->define_conf_setting('UCPSESSIONTIMEOUT',$set,true);
+
+// UCPCASENABLE
+$set['value'] = false;
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 0;
+$set['name'] = 'Enable CAS';
+$set['description'] = 'Enable login with CAS';
+$set['type'] = CONF_TYPE_BOOL;
+FreePBX::Config()->define_conf_setting('UCPCASENABLE',$set,true);
+
+// UCPCASHOST
+$set['value'] = '';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS Host';
+$set['description'] = 'UCP CAS Host';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASHOST',$set,true);
+
+// UCPCASPORT
+$set['value'] = '443';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS Port';
+$set['description'] = 'UCP CAS Port';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASPORT',$set,true);
+
+// UCPCASLDAP
+$set['value'] = '';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS LDAP';
+$set['description'] = 'UCP CAS LDAP';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASLDAP',$set,true);
+
+// UCPPOLLINGDELAY
+$set['value'] = '5000';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP Polling Delay';
+$set['description'] = 'Time in ms between polling time in UCP';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPPOLLINGDELAY',$set,true);

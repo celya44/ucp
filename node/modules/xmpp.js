@@ -44,33 +44,29 @@ Xmpp = function(freepbx) {
 		socket.join(id); //join my own room
 
 		socket.on("login", function(data) {
-			var query = freepbx.db.query("SELECT x.*, o.value as host FROM xmpp_options o, xmpp_users x, ucp_sessions s WHERE x.user = s.uid AND o.keyword = 'domain' AND s.session = '" + suppliedToken + "'");
-			query.on('result', function(res) {
-				res.on("data", function(row) {
+			freepbx.db.query("SELECT x.*, o.value as host FROM xmpp_options o, xmpp_users x, ucp_sessions s WHERE x.user = s.uid AND o.keyword = 'domain' AND s.session = ?", [suppliedToken])
+				.on("data", function(row) {
 					user = row;
-				}).on('end', function() {
-
-				});
-			}).on("end", function() {
-				var username,password;
-				if (user !== null) {
-					if(!data.username && !data.password && typeof credentials[suppliedToken] !== "undefined" && credentials[suppliedToken].username && credentials[suppliedToken].password) {
-						username = credentials[suppliedToken].username;
-						password = credentials[suppliedToken].password;
-					} else if(data.username && data.password) {
-						credentials[suppliedToken] = {
-							"username":data.username,
-							"password":data.password
-						};
-						username = data.username;
-						password = data.password;
-					} else {
-						xmppSocket.to(id).emit("prompt");
-						return;
+				}).on("end", function() {
+					var username,password;
+					if (user !== null) {
+						if(!data.username && !data.password && typeof credentials[suppliedToken] !== "undefined" && credentials[suppliedToken].username && credentials[suppliedToken].password) {
+							username = credentials[suppliedToken].username;
+							password = credentials[suppliedToken].password;
+						} else if(data.username && data.password) {
+							credentials[suppliedToken] = {
+								"username":data.username,
+								"password":data.password
+							};
+							username = data.username;
+							password = data.password;
+						} else {
+							xmppSocket.to(id).emit("prompt");
+							return;
+						}
+						sessions[id] = connect(username + "@" + user.host, password, id, io, socket);
 					}
-					sessions[id] = connect(username + "@" + user.host, password, id, io, socket);
-				}
-			});
+				});
 		});
 
 		socket.on("addUser", function(user) {

@@ -11,6 +11,7 @@
 				$.mobile.ignoreContentEnabled = true;
 			});
 			var languages = { locale_data : <?php echo $language ?> };
+			var pollingDelay = <?php echo $pollingDelay?>;
 		</script>
 		<?php foreach($gScripts as $file) { ?>
 			<script type="text/javascript" src="assets/js/<?php echo $file.$version_tag?>"></script>

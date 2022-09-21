@@ -1,7 +1,7 @@
 Ucphelloworld = function(freepbx) {
 	var ami = freepbx.astman, //https://github.com/pipobscure/NodeJS-AsteriskManager
 			io = freepbx.server.io, //https://github.com/socketio/socket.io
-			db = freepbx.db, //https://github.com/mscdex/node-mariasql
+			db = freepbx.db, //https://github.com/mariadb-corporation/mariadb-connector-nodejs/blob/master/documentation/callback-api.md
 			config = freepbx.config.getAll(); //AMPCONF freepbx advanced settings array
 
 	//The namespace to bind to
