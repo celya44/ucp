@@ -8,7 +8,7 @@
 var EventEmitter = require( "events" ).EventEmitter,
 		ini = require("ini"),
 		fs = require("fs"),
-		nodeMaria = require("mariasql"),
+		nodeMaria = require("mariadb/callback"),
 		obj = {};
 
 FreePBX = function() {
@@ -62,23 +62,30 @@ connect2database = function(config, callback) {
 	var db = {},
 			init = false;
 	if(typeof config.AMPDBSOCK !== "undefined" && config.AMPDBSOCK.length) {
-		db = new nodeMaria({
+		db = nodeMaria.createConnection({
 			user: config.AMPDBUSER,
 			password: config.AMPDBPASS,
-			db: config.AMPDBNAME,
-			unixSocket: config.AMPDBSOCK,
-			charset: 'UTF8'
+			database: config.AMPDBNAME,
+			socketPath: config.AMPDBSOCK,
 		});
 	} else {
-		db = new nodeMaria({
+		const dns = require('dns');
+		dns.setDefaultResultOrder('ipv4first');
+		db = nodeMaria.createConnection({
 			host: config.AMPDBHOST,
 			user: config.AMPDBUSER,
 			password: config.AMPDBPASS,
-			db: config.AMPDBNAME,
+			database: config.AMPDBNAME,
 			port: (typeof config.AMPDBPORT !== "undefined" && config.AMPDBPORT.length) ? config.AMPDBPORT : 3306, 
-			charset: 'UTF8'
 		});
 	}
+	db.connect(err => {
+		if (err) {
+			console.log("not connected due to error: " + err);
+		} else {
+			console.log("connected ! connection id is " + conn.threadId);
+		}
+	});
 
 	db.on("ready", function() {
 		if (!init) {
@@ -106,9 +113,8 @@ connect2database = function(config, callback) {
 		throw "The MySQL connection was closed!";
 	});
 
-	var query = db.query("SHOW VARIABLES LIKE 'wait_timeout'");
-	query.on('result', function(res) {
-		res.on('data', function(row) {
+	db.query("SHOW VARIABLES LIKE 'wait_timeout'")
+		.on('data', row => {
 			let wait_time = row.Value * 1000;
 			console.log(wait_time);
 			let reping_time = wait_time / 2;
@@ -119,9 +125,6 @@ connect2database = function(config, callback) {
 		}).on('end', function() {
 			console.log('Result set finished');
 		});
-	}).on('end', function() {
-		console.log('No more result sets!');
-	});
 
 
 };

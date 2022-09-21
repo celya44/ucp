@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.0.21</version>
+	<version>16.50.3</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,7 +11,16 @@
 	</description>
   	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
 	<changelog>
-		*16.0.21*  Added js AMQP library and options for CAS login
+		*16.50.3* Fix ucp node install failure
+		*16.50.2* Fix missing module error 
+		*16.50.1* Support for AMQP and CAS added
+		*16.0.27* Packaging of ver 16.0.27
+		*16.0.26* Packaging of ver 16.0.26
+		*16.0.25* Packaging of ver 16.0.25
+		*16.0.24* Packaging of ver 16.0.24
+		*16.0.23* FREEPBX-23654 
+		*16.0.22* Packaging of ver 16.0.22
+		*16.0.21* Packaging of ver 16.0.21
 		*16.0.20*  Reverting bootstrap and dependent libs fixes
 		*16.0.19.4* Packaging of ver 16.0.19.4
 		*16.0.19.3* FREEI-2496 Added branding footer to ucp dashboard and login page 
