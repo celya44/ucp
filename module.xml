@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.50.2</version>
+	<version>16.50.3</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,7 +11,8 @@
 	</description>
   	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
 	<changelog>
-		*16.50.2* Version bump
+		*16.50.3* Fix ucp node install failure
+		*16.50.2* Fix missing module error 
 		*16.50.1* Support for AMQP and CAS added
 		*16.0.24* Packaging of ver 16.0.24
 		*16.0.23* FREEPBX-23654 
