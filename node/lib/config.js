@@ -43,20 +43,16 @@ Config = function(database) {
  * @param {Function} callback Callback when the refresh has finished
  */
 refreshCache = function(callback) {
-	var query = db.query("SELECT * FROM freepbx_settings");
-	query.on('result', function(res) {
-		res.on('data', function(row) {
+	db.query("SELECT * FROM freepbx_settings")
+		.on('data', function(row) {
 			var val = row.value;
 			if (row.type == "bool") {
 				val = (row.value !== 0) ? true : false;
 			}
 			configs[row.keyword] = val;
 		}).on('end', function() {
-
+			callback();
 		});
-	}).on('end', function() {
-		callback();
-	});
 
 };
 
