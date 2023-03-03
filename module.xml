@@ -14,6 +14,8 @@
 		*16.50.3* Fix ucp node install failure
 		*16.50.2* Fix missing module error 
 		*16.50.1* Support for AMQP and CAS added
+		*16.0.33* FREEI-5572 
+		*16.0.32* FREEI-4700 Integrated password management 
 		*16.0.31* FREEI-5111 
 		*16.0.30* Packaging of ver 16.0.30
 		*16.0.29* Packaging of ver 16.0.29
