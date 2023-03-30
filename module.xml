@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.50.4</version>
+	<version>16.50.5</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,6 +11,12 @@
 	</description>
   	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
 	<changelog>
+		*16.50.5* 20230330 Mise à jour upstream
+		*16.0.38* FREEPBX-24070 
+		*16.0.37* FREEPBX-24083 
+		*16.0.36* FREEPBX-24071 Updated moment timezone library 
+		*16.0.35* Packaging of ver 16.0.35
+		*16.0.34* FREEI-5729 
 		*16.50.4* 20230303 Packaging of ver 16.50.4
 		*16.50.3* Fix ucp node install failure
 		*16.50.2* Fix missing module error 
@@ -105,7 +111,7 @@
 	<depends>
 		<module>userman ge 16.0.18</module>
 		<module>core ge 16.0.56.4</module>
-		<version>16.0.10.20</version>
+		<version>16.0.37</version>
 		<module>pm2 ge 16.0.4</module>
 		<module>certman ge 16.0.13</module>
 	</depends>
