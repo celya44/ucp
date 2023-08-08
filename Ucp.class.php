@@ -287,7 +287,7 @@ class Ucp implements \BMO {
 
 		$cert = $this->FreePBX->Certman->getDefaultCertDetails();
 		if(!empty($cert)) {
-			$this->setDefaultCert($cert, false);
+			$this->setDefaultCert($cert, false, false);
 		}
 
 		if($this->FreePBX->Modules->checkStatus("sysadmin")) {
@@ -1276,10 +1276,12 @@ class Ucp implements \BMO {
 		return $files;
 	}
 
-	public function setDefaultCert($details, $restart=true) {
+	public function setDefaultCert($details, $restart=true, $enableNodeTLS=true) {
 		$certF = isset($details['integration']['files']['pem']) ? $details['integration']['files']['pem'] : $details['integration']['files']['crt'];
 		$keyF = $details['integration']['files']['key'];
-		$this->FreePBX->Config->update("NODEJSTLSENABLED",true);
+		if($enableNodeTLS){
+			$this->FreePBX->Config->update("NODEJSTLSENABLED",true);
+		}
 		$this->FreePBX->Config->update("NODEJSTLSCERTFILE",$certF);
 		$this->FreePBX->Config->update("NODEJSTLSPRIVATEKEY",$keyF);
 		if($restart) {
