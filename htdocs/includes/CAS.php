@@ -12,7 +12,7 @@ include_once('CAS/CAS.php');
 $serveur = $_SERVER['REQUEST_SCHEME'] == 'http' ? 'http://' : 'https://';
 $serveur .= $_SERVER['SERVER_NAME'];
 $service_url = $serveur;
-if( $_SERVER['SERVER_PORT'] !== "433" && $_SERVER['SERVER_PORT'] !== "80" ){
+if( $_SERVER['SERVER_PORT'] !== "443" && $_SERVER['SERVER_PORT'] !== "80" ){
 	$service_url .= ":".$_SERVER['SERVER_PORT'];
 }
 $serveur .= substr($_SERVER['REQUEST_URI'], 0 , strrpos($_SERVER['REQUEST_URI'], '/'));
@@ -24,6 +24,9 @@ $cas_context = '/cas';
 $url_ucp = $serveur;
 $url_logout = "http://{$cas_host}/logout/";
 $url_ldap = $ucp->FreePBX->Config->get("UCPCASLDAP");
+$ldap_dn = $ucp->FreePBX->Config->get("UCPCASLDAPDN");
+$ldap_search = $ucp->FreePBX->Config->get("UCPCASLDAPSEARCH");
+$ldap_parameter = $ucp->FreePBX->Config->get("UCPCASLDAPPARAM");
 
 
 // Some small code triggered by the logout button
@@ -35,12 +38,13 @@ if ( isset($_REQUEST['logout']) ) {
     die();
 }
 
-
 // Initialize phpCAS Client
-// For php-cas version 1.3.6-1+deb10u1 or >= 1.6.0
-phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
-// Otherwise
-// phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
+$relMethod = new ReflectionMethod('phpCAS','client');
+if ($relMethod->getNumberOfParameters() === 6){
+    phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
+}else{
+    phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context);
+}
 
 // L'URL de retour après identification sur le CAS
 phpCAS::setFixedServiceURL($url_ucp);
@@ -71,11 +75,11 @@ $userSite = strtolower($userAttributes['l']);
 
 $ldap = ldap_connect($url_ldap);
 
-$u = ldap_search($ldap, "dc=imta,dc=fr", "supannAliasLogin={$userLogin}");
+$u = ldap_search($ldap, $ldap_dn, sprintf($ldap_search, $userLogin));
 $infos = ldap_get_entries($ldap, $u);
 
 foreach ($infos AS $info){
-    $ext = substr($info['rucoptphone'][0], 9);
+    $ext = substr($info[$ldap_parameter][0], 9);
     if (!empty($ext)) $userExtension = $ext;
 }
 

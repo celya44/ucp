@@ -164,9 +164,54 @@ $set['module'] = 'ucp'; //This will help delete the settings when module is unin
 $set['category'] = 'User Control Panel';
 $set['emptyok'] = 1;
 $set['name'] = 'UCP CAS LDAP';
-$set['description'] = 'UCP CAS LDAP';
+$set['description'] = 'UCP CAS LDAP URL';
 $set['type'] = CONF_TYPE_TEXT;
 FreePBX::Config()->define_conf_setting('UCPCASLDAP',$set,true);
+
+// UCPCASLDAPDN
+$set['value'] = '';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS LDAP DN';
+$set['description'] = 'UCP CAS LDAP DN';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASLDAPDN',$set,true);
+
+// UCPCASLDAPSEARCH
+$set['value'] = '';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS LDAP Search';
+$set['description'] = 'Search query to get the LDAP user from the CAS user. Use %s in your string';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASLDAPSEARCH',$set,true);
+
+// UCPCASLDAPPARAM
+$set['value'] = '';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS LDAP Parameter';
+$set['description'] = 'LDAP parameter to get the user login for UCP';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASLDAPPARAM',$set,true);
 
 // UCPPOLLINGDELAY
 $set['value'] = '5000';
