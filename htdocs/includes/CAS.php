@@ -11,6 +11,10 @@ include_once('CAS/CAS.php');
 
 $serveur = $_SERVER['REQUEST_SCHEME'] == 'http' ? 'http://' : 'https://';
 $serveur .= $_SERVER['SERVER_NAME'];
+$service_url = $serveur;
+if( $_SERVER['SERVER_PORT'] !== "433" && $_SERVER['SERVER_PORT'] !== "80" ){
+	$service_url .= ":".$_SERVER['SERVER_PORT'];
+}
 $serveur .= substr($_SERVER['REQUEST_URI'], 0 , strrpos($_SERVER['REQUEST_URI'], '/'));
 
 // Initialize phpCAS
@@ -18,7 +22,7 @@ $cas_host = $ucp->FreePBX->Config->get("UCPCASHOST");
 $cas_port = $ucp->FreePBX->Config->get("UCPCASPORT");
 $cas_context = '/cas';
 $url_ucp = $serveur;
-$url_logout = "http://${cas_host}/logout/";
+$url_logout = "http://{$cas_host}/logout/";
 $url_ldap = $ucp->FreePBX->Config->get("UCPCASLDAP");
 
 
@@ -33,7 +37,10 @@ if ( isset($_REQUEST['logout']) ) {
 
 
 // Initialize phpCAS Client
-phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context);
+// For php-cas version 1.3.6-1+deb10u1 or >= 1.6.0
+phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
+// Otherwise
+// phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
 
 // L'URL de retour après identification sur le CAS
 phpCAS::setFixedServiceURL($url_ucp);
