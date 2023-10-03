@@ -70,7 +70,7 @@ class Ucp implements \BMO {
 
 	public function install() {
 		$settings = array(
-			'NODEJSENABLED' => true,
+			'NODEJSENABLED' => false,
 			'NODEJSTLSENABLED' => false,
 			'NODEJSBINDADDRESS' => '::',
 			'NODEJSBINDPORT' => '8001',
@@ -1276,12 +1276,10 @@ class Ucp implements \BMO {
 		return $files;
 	}
 
-	public function setDefaultCert($details, $restart=true, $enableNodeTLS=true) {
+	public function setDefaultCert($details, $restart=true) {
 		$certF = isset($details['integration']['files']['pem']) ? $details['integration']['files']['pem'] : $details['integration']['files']['crt'];
 		$keyF = $details['integration']['files']['key'];
-		if($enableNodeTLS){
-			$this->FreePBX->Config->update("NODEJSTLSENABLED",true);
-		}
+		$this->FreePBX->Config->update("NODEJSTLSENABLED",false);
 		$this->FreePBX->Config->update("NODEJSTLSCERTFILE",$certF);
 		$this->FreePBX->Config->update("NODEJSTLSPRIVATEKEY",$keyF);
 		if($restart) {
