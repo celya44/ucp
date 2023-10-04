@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.50.7</version>
+	<version>16.50.8</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,6 +11,7 @@
 	</description>
   	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
 	<changelog>
+		*16.50.8* 2023-10-04 Les droits des utilisateurs peuvent maintenant être restreints
 		*16.50.7* 2023-08-17 Correction et mis à jour du CAS
 		*16.50.6* 2023-08-08 Corrige le serveur Nodejs qui se réactive à chaque mise à jour
 		*16.50.5* 20230330 Mise à jour upstream
