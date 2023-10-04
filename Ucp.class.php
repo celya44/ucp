@@ -381,6 +381,7 @@ class Ucp implements \BMO {
 								"user" => array(),
 								"allowLogin" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','allowLogin'),
 								"originate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','originate'),
+								"isUserRestricted" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','isUserRestricted'),
 								"tourMode" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','tour'),
 								"tempList" => $tempList,
 								"assignedTemplate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|template','templateid'),
@@ -447,6 +448,7 @@ class Ucp implements \BMO {
 								"user" => $user,
 								"allowLogin" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','allowLogin',true),
 								"originate" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','originate',true),
+								"isUserRestricted" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','isUserRestricted',true),
 								"tourMode" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','tour',true),
 								"sessions" => $this->getUserSessions($user['id']),
 								"tempList" => $tempList,
@@ -669,6 +671,11 @@ class Ucp implements \BMO {
 			} else {
 				$this->Userman->setModuleSettingByGID($id,'ucp|Global','originate', false);
 			}
+			if($_POST['ucp_isUserRestricted'] == 'true') {
+				$this->Userman->setModuleSettingByGID($id,'ucp|Global','isUserRestricted', true);
+			} else {
+				$this->Userman->setModuleSettingByGID($id,'ucp|Global','isUserRestricted', false);
+			}
 			$this->Userman->setModuleSettingByGID($id,'ucp|Settings','assigned', $_POST['ucp_settings']);
 			if($_POST['assign_template'] == 'true') {
 				$this->Userman->setModuleSettingByGID($id,'ucp|template','assigntemplate',true);
@@ -704,6 +711,11 @@ class Ucp implements \BMO {
 				$this->Userman->setModuleSettingByGID($id,'ucp|Global','originate', true);
 			} else {
 				$this->Userman->setModuleSettingByGID($id,'ucp|Global','originate', false);
+			}
+			if($_POST['ucp_isUserRestricted'] == 'true') {
+				$this->Userman->setModuleSettingByGID($id,'ucp|Global','isUserRestricted', true);
+			} else {
+				$this->Userman->setModuleSettingByGID($id,'ucp|Global','isUserRestricted', false);
 			}
 			$this->Userman->setModuleSettingByGID($id,'ucp|Settings','assigned', $_POST['ucp_settings']);
 			if($_POST['assign_template'] == 'true') {
@@ -771,6 +783,13 @@ class Ucp implements \BMO {
 				} else {
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','originate',null);
 				}
+				if($_POST['ucp_isUserRestricted'] == 'true') {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', true);
+				} else if($_POST['ucp_isUserRestricted'] == 'false') {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', false);
+				} else {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', null);
+				}
 				if($_POST['assign_template'] == 'true') {
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|template','assigntemplate',true);
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|template','templateid',$_POST['templateid']);
@@ -822,6 +841,13 @@ class Ucp implements \BMO {
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','originate',false);
 				} else {
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','originate',null);
+				}
+				if($_POST['ucp_isUserRestricted'] == 'true') {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', true);
+				} else if($_POST['ucp_isUserRestricted'] == 'false') {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', false);
+				} else {
+					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|Global','isUserRestricted', null);
 				}
 				if($_POST['assign_template'] == 'true') {
 					$this->FreePBX->Userman->setModuleSettingByID($id,'ucp|template','assigntemplate',true);

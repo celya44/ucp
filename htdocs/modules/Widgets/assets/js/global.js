@@ -46,6 +46,7 @@ var WidgetsC = Class.extend({
 		if(title !== "") {
 			$("title").text(_("User Control Panel") + " - " + title);
 		}
+		this.lockdownUser();
 	},
 	loadDashboard: function() {
 		var $this = this;
@@ -754,6 +755,40 @@ var WidgetsC = Class.extend({
 				$(".widget-options .fa-lock").click();
 			}
 		});
+	},
+	lockdownUser: function(toDisable = ['widget','dashboard']){
+		if(moduleSettings.Widgets.isUserRestricted){
+			/****** Widgets *******/
+			if( ( typeof toDisable === 'string' || typeof toDisable === 'object' ) && toDisable.includes('widget') ){
+				// Disable moving and resizing widgets
+				var gridst = $('.grid-stack').data('gridstack');
+				jQuery(".grid-stack-item").each( (i,e) => {
+					gridst.resizable( jQuery(e) , false);
+					gridst.movable( jQuery(e) , false);
+					gridst.locked( jQuery(e) , true);
+					jQuery(e).find(".lock-widget i").removeClass().addClass("fa fa-lock");
+				});
+				this.saveLayoutContent();
+				// Disable clicks on widgets locks
+				$(document).off("click", ".lock-widget");
+				// Disables adding widgets
+				$("#side_bar_content .add-widget").attr('data-target','');
+				// Disables removing widgets
+				$(document).off("click", ".remove-widget");
+			}
+			/****** Dashboards *******/
+			if( ( typeof toDisable === 'string' || typeof toDisable === 'object' ) && toDisable.includes('dashboard') ){
+				// Disables clicks on dashboard locks
+				$(".lock-dashboard").removeClass("fa-unlock-alt").addClass("fa-lock");
+				$(document).off("click",".lock-dashboard");
+				// Disables adding new dashboards
+				$("#add_new_dashboard").attr('data-target','');
+				// Disables renaming dashboards
+				$(document).off("click", ".edit-dashboard");
+				// Disables removing dashboards
+				$(document).off("click", ".remove-dashboard");
+			}
+		}
 	},
 	htmlEntities: function(str) {
 		return $("<div/>").text(str).html();
@@ -1549,6 +1584,7 @@ var WidgetsC = Class.extend({
 					}
 				}
 			});
+			$this.lockdownUser();
 		});
 	}
 });

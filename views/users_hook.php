@@ -96,6 +96,37 @@
 				</div>
 			</div>
 		</div>
+		<!--UCP Restrict User isUserRestricted-->
+		<div class="element-container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-3">
+								<label class="control-label" for="ucp_isUserRestricted"><?php echo _('Restreind les droits')?></label>
+								<i class="fa fa-question-circle fpbx-help-icon" data-for="ucp_isUserRestricted"></i>
+							</div>
+							<div class="col-md-9 radioset">
+								<input type="radio" id="ucp_isUserRestricted_1" name="ucp_isUserRestricted" value="true" <?php echo ($isUserRestricted) ? 'checked' : ''?>>
+								<label for="ucp_isUserRestricted_1"><?php echo _("Yes")?></label>
+								<input type="radio" id="ucp_isUserRestricted_2" name="ucp_isUserRestricted" value="false" <?php echo (!is_null($isUserRestricted) && !$isUserRestricted) ? 'checked' : ''?>>
+								<label for="ucp_isUserRestricted_2"><?php echo _("No")?></label>
+								<?php if($mode == "user") {?>
+									<input type="radio" id="ucp_isUserRestricted_3" name="ucp_isUserRestricted" value='inherit' <?php echo is_null($isUserRestricted) ? 'checked' : ''?>>
+									<label for="ucp_isUserRestricted_3"><?php echo _('Inherit')?></label>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<span id="ucp_isUserRestricted-help" class="help-block fpbx-help-block"><?php echo _("Si activé : interdit de modifier les widget et dashboards existant. Il sera alors impossible de bouger les widget, de les supprimer ou d'en ajouter. Il est également impossible d'ajouter, de renommer ou supprimer un dashboard.")?></span>
+				</div>
+			</div>
+		</div>
+		<!--END UCP Restrict User-->
 		<!--UCP Template-->
 		<div class="element-container">
 			<div class="row">
