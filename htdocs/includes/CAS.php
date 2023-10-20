@@ -19,7 +19,7 @@ $serveur .= substr($_SERVER['REQUEST_URI'], 0 , strrpos($_SERVER['REQUEST_URI'],
 
 // Initialize phpCAS
 $cas_host = $ucp->FreePBX->Config->get("UCPCASHOST");
-$cas_port = $ucp->FreePBX->Config->get("UCPCASPORT");
+$cas_port = (int)$ucp->FreePBX->Config->get("UCPCASPORT");
 $cas_context = '/cas';
 $url_ucp = $serveur;
 $url_logout = "http://{$cas_host}/logout/";
