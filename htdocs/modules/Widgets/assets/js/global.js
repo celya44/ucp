@@ -758,6 +758,8 @@ var WidgetsC = Class.extend({
 	},
 	lockdownUser: function(toDisable = ['widget','dashboard']){
 		if(moduleSettings.Widgets.isUserRestricted){
+			// TODO : fait des droits modulaires (choisi ce qui est désactivé !!)
+			// TODO : cache les boutons au lieu de désactiver les clicks
 			/****** Widgets *******/
 			if( ( typeof toDisable === 'string' || typeof toDisable === 'object' ) && toDisable.includes('widget') ){
 				// Disable moving and resizing widgets
@@ -775,6 +777,8 @@ var WidgetsC = Class.extend({
 				$("#side_bar_content .add-widget").attr('data-target','');
 				// Disables removing widgets
 				$(document).off("click", ".remove-widget");
+				// Disables configuring widgets
+				$(document).off("click", ".edit-widget");
 			}
 			/****** Dashboards *******/
 			if( ( typeof toDisable === 'string' || typeof toDisable === 'object' ) && toDisable.includes('dashboard') ){
