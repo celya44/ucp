@@ -532,6 +532,11 @@ var UCPC = Class.extend({
 		if (!UCP.polling) {
 			UCP.polling = true;
 			var mdata = {};
+			let mVisible = [];
+			jQuery('.grid-stack-item').each( (i,e) => { mVisible.push(jQuery(e).data('rawname')); } ); // Récupère les widgets sur le dashboard
+			jQuery('.custom-widget').each( (i,e) => { mVisible.push(jQuery(e).data('widget_rawname')); } ); // Récupère les widgets sur la sidebar
+			mVisible = mVisible.filter( (v,i,a) => a.indexOf(v) === i); // Supprime les doublons
+
 			mdata = this.callModulesByMethod("prepoll",$.url().param());
 			$.ajax(
 				{
@@ -542,7 +547,8 @@ var UCPC = Class.extend({
 					{
 						quietmode: 1,
 						command: "poll",
-						data: mdata
+						data: mdata,
+						modulesInUse: mVisible
 					}
 				}
 			).done(function(data) {

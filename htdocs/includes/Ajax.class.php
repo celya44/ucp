@@ -150,15 +150,19 @@ class Ajax extends UCP {
 	public function poll() {
 		$modules = $this->UCP->Modules->getModulesByMethod('poll');
 		$modData = array();
-		foreach($modules as $module) {
-			$mdata = !empty($_POST['data'][$module]) ? $_POST['data'][$module] : array();
-			$this->UCP->Modgettext->push_textdomain(strtolower($module));
-			if(!empty($mdata)) {
-				$modData[$module] = $this->UCP->Modules->$module->poll($mdata);
-			} else {
-				$modData[$module] = $this->UCP->Modules->$module->poll(array());
+		if( !is_null($_POST['modulesInUse']) ){
+			foreach($modules as $module) {
+				if( in_array(strtolower($module),$_POST['modulesInUse'] ) ){
+					$mdata = !empty($_POST['data'][$module]) ? $_POST['data'][$module] : array();
+					$this->UCP->Modgettext->push_textdomain(strtolower($module));
+					if(!empty($mdata)) {
+						$modData[$module] = $this->UCP->Modules->$module->poll($mdata);
+					} else {
+						$modData[$module] = $this->UCP->Modules->$module->poll(array());
+					}
+					$this->UCP->Modgettext->pop_textdomain();
+				}
 			}
-			$this->UCP->Modgettext->pop_textdomain();
 		}
 		return array(
 			"status" => true,
