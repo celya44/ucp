@@ -3,6 +3,18 @@
  *  CAS auth +  SAML with attributes
  */
 
+$ps = explode(':',get_include_path());
+$PHPCASISINSTALLED = false;
+foreach( $ps as $p )
+{
+	if(file_exists($p.'/'.'CAS/CAS.php')){
+		$PHPCASISINSTALLED = true;
+	}
+}
+if(!$PHPCASISINSTALLED){
+    echo "<div>Erreur : la librairie php-cas n'est pas installée<br><br>Merci de lancer en ligne de commande :<br><pre>apt-get install php-cas</pre></div>";
+	exit(1);
+}
 // import phpCAS lib
 include_once('CAS/CAS.php');
 
