@@ -80,19 +80,6 @@ class Ucp implements \BMO {
 			'NODEJSTLSPRIVATEKEY' => ''
 		);
 
-		$info = $this->FreePBX->Modules->getInfo('ucpnode');
-		if(!empty($info['ucpnode'])) {
-			foreach($settings as $setting => $value) {
-				if($this->FreePBX->Config->conf_setting_exists($setting)) {
-					$settings[$setting] = $this->FreePBX->Config->get($setting);
-				}
-			}
-
-			$modclass = \module_functions::create();
-			//$modclass->uninstall('ucpnode');
-			$modclass->delete('ucpnode');
-		}
-
 		exec("g++ --version",$output,$ret); //g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-4)
 		if(!empty($ret) || empty($output)) {
 			out(_("gcc-c++ is not installed"));
@@ -187,7 +174,7 @@ class Ucp implements \BMO {
 
 		// NODEJSENABLED
 		$set['value'] = $settings['NODEJSENABLED'];
-		$set['defaultval'] =& $set['value'];
+		$set['defaultval'] = false;
 		$set['options'] = '';
 		$set['name'] = 'Enable the NodeJS Server';
 		$set['description'] = 'Whether to enable the backend server for UCP which allows instantaneous updates to the interface';
@@ -199,7 +186,7 @@ class Ucp implements \BMO {
 
 		// NODEJSTLSENABLED
 		$set['value'] = $settings['NODEJSTLSENABLED'];
-		$set['defaultval'] =& $set['value'];
+		$set['defaultval'] = false;
 		$set['options'] = '';
 		$set['name'] = 'Enable TLS for the NodeJS Server';
 		$set['description'] = 'Whether to enable TLS for the backend server for UCP which allows instantaneous updates to the interface';
@@ -305,7 +292,7 @@ class Ucp implements \BMO {
 			outn(_("Starting new UCP Node Process..."));
 			$started = $this->startFreepbx();
 			if(!$started) {
-				out(_("Failed!"));
+				out(_("Failed or Disabled!"));
 			} else {
 				out(sprintf(_("Started with PID %s!"),$started));
 			}

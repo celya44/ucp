@@ -144,12 +144,12 @@ class UCP extends UCP_Helpers {
 	 */
 	function getServerSettings() {
 		$enabled = $this->FreePBX->Config->get('NODEJSENABLED');
-		$enabled = is_bool($enabled) || is_int($enabled) ? $enabled : true;
+		$enabled = is_bool($enabled) || is_int($enabled) ? $enabled : false;
 		$port = $this->FreePBX->Config->get('NODEJSBINDPORT');
 		$port = !empty($port) ? $port : 8001;
 
 		$enabledS = $this->FreePBX->Config->get('NODEJSTLSENABLED');
-		$enabledS = is_bool($enabledS) || is_int($enabledS) ? $enabledS : true;
+		$enabledS = is_bool($enabledS) || is_int($enabledS) ? $enabledS : false;
 		$portS = $this->FreePBX->Config->get('NODEJSHTTPSBINDPORT');
 		$portS = !empty($portS) ? $portS : 8003;
 
