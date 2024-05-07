@@ -275,7 +275,13 @@ class User {
 	 * @return bool True if cookie was set, otherwise false
 	 */
 	private function _setCookie($token) {
-		return setcookie($this->remembermeCookieName, $token, time()+60*60*24*7);
+		$expire = $this->UCP->FreePBX->Config->get('UCPSESSIONTIMEOUT');
+		if(!empty($expire) && ctype_digit($expire)) {
+			$time = time()+60*60*24*$expire;
+		}else{
+			$time = time()+60*60*24*1095;
+		}
+		return setcookie($this->remembermeCookieName, $token, $time);
 	}
 
 	/**
