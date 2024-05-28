@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.50.14</version>
+	<version>16.50.15</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,6 +11,7 @@
 	</description>
   	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
 	<changelog>
+		*16.50.15* 2024-05-28 Update AMQP library
 		*16.50.14* 2024-05-07 L expiration du login peut etre configure avec UCPSESSIONTIMEOUT
 		*16.50.13* 2023-11-14 Corrige le serveur NodeJS qui se réactive à chaque mise à jour, pour de bon cette fois ci
 		*16.50.12* 2023-10-24 Affiche une alerte si la librairie php-cas n'est pas installée lorsqu'elle est requise
