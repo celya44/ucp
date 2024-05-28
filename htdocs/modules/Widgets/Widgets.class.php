@@ -60,10 +60,7 @@ class Widgets extends Modules {
 
 		if (!empty($widgets_info)) {
 			foreach ($widgets_info as $data) {
-				if (empty($widgets['widget'][ucfirst((string) $data->rawname)]['list'][$data->widget_type_id])) {
-					continue;
-				}
-				$widgetData = $widgets['widget'][ucfirst((string) $data->rawname)]['list'][$data->widget_type_id];
+				$widgetData = $widgets['widget'][ucfirst((string) $data->rawname)]['list'][$data->widget_type_id] ?? [];
 				$minsize    = '';
 				if (!empty($widgetData['minsize'])) {
 					if ($widgetData['minsize']['height'] > $widgetData['defaultsize']['height']) {

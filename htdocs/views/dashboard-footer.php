@@ -82,21 +82,27 @@
 													<!-- flight section -->
 													<div class="bhoechie-tab-content <?php echo ($first) ? "active" : ""; ?>" data-id="dashboard-<?php echo $widget_category_info['rawname']?>">
 
-														<?php if(!empty($widget_category_info["list"])) { ?>
-															<?php foreach($widget_category_info["list"] as $widget_id => $widget_list){ ?>
-																<div class="ibox-content-widget">
-																	<div class="row">
-																		<div class="widget-title col-md-11">
-																			<h4><i class="<?php echo $widget_list["icon"] ?? $widget_category_info['icon'] ?>"></i> <?php echo $widget_list["display"]; ?>
-																				<br>
-																				<small class="m-r"><?php echo $widget_list["description"] ?? ''?></small>
-																			</h4>
-																		</div>
-																		<div class="widget-add-container top-offset text-center">
-																			<button type="button" class="btn btn-sm btn-primary btn-outline add-widget-button" data-widget_module_name="<?php echo $widget_category_info["display"]; ?>" data-widget_name="<?php echo $widget_list["display"]; ?>" data-widget_id="<?php echo $widget_id; ?>" data-rawname="<?php echo $widget_category_info["rawname"]; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+														<?php if(isset($widget_category_info["hasError"]) && $widget_category_info["hasError"] == true) { ?>
+															<?php foreach($widget_category_info["errorMessages"] as $errorMessage) { ?>
+																<div class="alert alert-danger"><?php echo $errorMessage ?? ''?></div>
+															<?php } ?>
+														<?php } else { ?>
+															<?php if(!empty($widget_category_info["list"])) { ?>
+																<?php foreach($widget_category_info["list"] as $widget_id => $widget_list){ ?>
+																	<div class="ibox-content-widget">
+																		<div class="row">
+																			<div class="widget-title col-md-11">
+																				<h4><i class="<?php echo $widget_list["icon"] ?? $widget_category_info['icon'] ?>"></i> <?php echo $widget_list["display"]; ?>
+																					<br>
+																					<small class="m-r"><?php echo $widget_list["description"] ?? ''?></small>
+																				</h4>
+																			</div>
+																			<div class="widget-add-container top-offset text-center">
+																				<button type="button" class="btn btn-sm btn-primary btn-outline add-widget-button" data-widget_module_name="<?php echo $widget_category_info["display"]; ?>" data-widget_name="<?php echo $widget_list["display"]; ?>" data-widget_id="<?php echo $widget_id; ?>" data-rawname="<?php echo $widget_category_info["rawname"]; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+																			</div>
 																		</div>
 																	</div>
-																</div>
+																<?php } ?>
 															<?php } ?>
 														<?php } ?>
 													</div>
@@ -124,23 +130,29 @@
 											<?php if(!empty($all_simple_widgets) && $all_simple_widgets["status"]) { ?>
 												<?php $first = true; foreach($all_simple_widgets["widget"] as $widget_category_info){?>
 													<div class="bhoechie-tab-content <?php echo ($first) ? "active" : ""; ?>" data-id="small-<?php echo $widget_category_info['rawname']?>">
-													<?php if(!empty($widget_category_info["list"])) { ?>
-														<?php foreach($widget_category_info["list"] as $widget_id => $widget_list){?>
-															<div class="ibox-content-widget">
-																<div class="row">
-																	<div class="widget-title col-md-11">
-																		<h4><i class="<?php echo !empty($widget_list['icon']) ? $widget_list['icon'] : $widget_category_info["icon"]; ?>"></i> <?php echo $widget_list["display"]; ?>
-																			<br>
-																			<small class="m-r"><?php echo $widget_list["description"] ?? ''?></small>
-																		</h4>
+														<?php if(isset($widget_category_info["hasError"]) && $widget_category_info["hasError"] == true) { ?>
+															<?php foreach($widget_category_info["errorMessages"] as $errorMessage) { ?>
+																<div class="alert alert-danger"><?php echo $errorMessage ?? ''?></div>
+															<?php } ?>
+														<?php } else { ?>
+															<?php if(!empty($widget_category_info["list"])) { ?>
+																<?php foreach($widget_category_info["list"] as $widget_id => $widget_list){?>
+																	<div class="ibox-content-widget">
+																		<div class="row">
+																			<div class="widget-title col-md-11">
+																				<h4><i class="<?php echo !empty($widget_list['icon']) ? $widget_list['icon'] : $widget_category_info["icon"]; ?>"></i> <?php echo $widget_list["display"]; ?>
+																					<br>
+																					<small class="m-r"><?php echo $widget_list["description"] ?? ''?></small>
+																				</h4>
+																			</div>
+																			<div class="widget-add-container top-offset text-center">
+																				<button type="button" class="btn btn-sm btn-primary btn-outline add-small-widget-button" <?php echo !empty($widget_list['hasSettings']) ? 'data-widget_settings="true"' : ''?> data-module_name="<?php echo $widget_category_info["display"]; ?>" data-name="<?php echo $widget_category_info["display"]; ?>" data-widget_type_id="<?php echo $widget_list['display']?>" data-id="<?php echo $widget_id; ?>" data-rawname="<?php echo $widget_category_info["rawname"]; ?>" data-icon="<?php echo !empty($widget_list['icon']) ? $widget_list['icon'] : $widget_category_info["icon"]; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+																			</div>
+																		</div>
 																	</div>
-																	<div class="widget-add-container top-offset text-center">
-																		<button type="button" class="btn btn-sm btn-primary btn-outline add-small-widget-button" <?php echo !empty($widget_list['hasSettings']) ? 'data-widget_settings="true"' : ''?> data-module_name="<?php echo $widget_category_info["display"]; ?>" data-name="<?php echo $widget_category_info["display"]; ?>" data-widget_type_id="<?php echo $widget_list['display']?>" data-id="<?php echo $widget_id; ?>" data-rawname="<?php echo $widget_category_info["rawname"]; ?>" data-icon="<?php echo !empty($widget_list['icon']) ? $widget_list['icon'] : $widget_category_info["icon"]; ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-																	</div>
-																</div>
-															</div>
+																<?php } ?>
+															<?php } ?>
 														<?php } ?>
-													<?php } ?>
 													</div>
 												<?php $first = false; } ?>
 											<?php } ?>

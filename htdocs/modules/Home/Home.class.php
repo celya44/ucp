@@ -39,19 +39,57 @@ class Home extends Modules {
 	}
 
 	function getWidgetList() {
+		$responseData = array(
+			"rawname" => "home",
+			"display" => _("RSS Feeds"),
+			"icon" => "fa fa-rss",
+			"list" => []
+		);
+		$errors = $this->validate();
+		if ($errors['hasError']) {
+			return array_merge($responseData, $errors);
+		}
+
 		$raws = $this->getFeeds();
 		$list = [];
 		foreach ($raws as $id => $raw) {
 			$list[$id] = [ "display" => $raw['display'], "description" => $raw['description'], "defaultsize" => [ "height" => 4, "width" => 4 ] ];
 		}
-		if (empty($list)) {
-			return;
+
+		$responseData['list'] = $list;
+		return $responseData;
+	}
+
+	/**
+	 * validate against rules
+	 */
+	private function validate($id = false) {
+		$data = array(
+			'hasError' => false,
+			'errorMessages' => []
+		);
+
+		$raws = $this->getFeeds();
+		if (empty($raws)) {
+			$data['hasError'] = true;
+			$data['errorMessages'][] = _('RSS Feeds are not set.');
+		}
+		if ($id !== false) {
+			if (!isset($raws[$id])) {
+				$data['hasError'] = true;
+				$data['errorMessages'][] = _('This feed is not found in RSS Feed list.');
+			}
 		}
 
-		return [ "rawname" => "home", "display" => _("RSS Feeds"), "icon" => "fa fa-rss", "list" => $list ];
+		return $data;
 	}
 
 	function getWidgetDisplay($id) {
+		$errors = $this->validate($id);
+		if ($errors['hasError']) {
+			return $errors;
+		}
+
 		$feeds = $this->getFeeds();
 		if (!empty($feeds[$id])) {
 			return [ 'title' => $feeds[$id]['display'], 'html' => $feeds[$id]['content'] ];
