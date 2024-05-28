@@ -92,7 +92,7 @@
 				data-widget_name="<?php echo $small_widget['widget_name']; ?>" data-icon="<?php echo $small_widget['icon']; ?>">
 				<div class="menu-actions">
 					<i class="fa fa-times-circle-o close-simple-widget-menu" aria-hidden="true"></i>
-					<?php if ($small_widget['hasSettings']) { ?><i class="fa fa-cog show-simple-widget-settings"
+					<?php if ($small_widget['hasSettings'] == '1') { ?><i class="fa fa-cog show-simple-widget-settings"
 						aria-hidden="true"></i>
 				<?php } ?>
 				</div>

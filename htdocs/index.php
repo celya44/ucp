@@ -125,7 +125,6 @@ if ( !isset($_SERVER['HTACCESS']) && preg_match("/apache/i", (string) $_SERVER['
 // }
 //TIME: 0.37255001068115
 
-$all_widgets = $ucp->Dashboards->getAllWidgets();
 $all_simple_widgets = $ucp->Dashboards->getAllSimpleWidgets();
 
 //TIME: 1.2794749736786
@@ -140,13 +139,10 @@ foreach($usw as $id => $widget) {
 	$info = $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']] ?? '';
 	$icon = !empty($all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon']) ? $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon'] : ($all_simple_widgets['widget'][$name]['icon'] ?? '');
 	$display = $all_simple_widgets['widget'][$name]['display'] ?? '';
-	if(empty($info)) {
-		continue;
-	}
 	$user_small_widgets[$id] = $widget;
-	$user_small_widgets[$id]['widget_name'] = $info['display'];
+	$user_small_widgets[$id]['widget_name'] = $info['display'] ?? $widget['widget_type_id'];
 	$user_small_widgets[$id]['name'] = $display;
-	$user_small_widgets[$id]['hasSettings'] = !empty($info['hasSettings']);
+	$user_small_widgets[$id]['hasSettings'] = $info['hasSettings'] ?? false;
 	$user_small_widgets[$id]['icon'] = $icon;
 }
 
@@ -172,7 +168,6 @@ if(!empty($_REQUEST["dashboard"])){
 
 //TIME: 1.2543160915375
 
-$displayvars['all_widgets'] = $all_widgets;
 $displayvars['all_simple_widgets'] = $all_simple_widgets;
 
 $displayvars['active_dashboard'] = $active_dashboard_id;
@@ -280,6 +275,8 @@ foreach($mods as $m) {
 $ucp->Modgettext->push_textdomain("ucp");
 
 if(!empty($user["id"])) {
+	$all_widgets = $ucp->Dashboards->getAllWidgets();
+	$displayvars['all_widgets'] = $all_widgets;
 	// No footer for UCP dashboard after login
 	$displayvars['year'] = date('Y',time());
 	$ucp->View->show_view(__DIR__ . '/views/dashboard-footer.php', $displayvars);
