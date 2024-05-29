@@ -114,37 +114,33 @@ if ( !isset($_SERVER['HTACCESS']) && preg_match("/apache/i", (string) $_SERVER['
 		$nt->delete('ucp', 'htaccess');
 	}
 }
-//TIME: 0.1096019744873
 
+if (!empty($user["id"])) {
+	$all_widgets = $ucp->Dashboards->getAllWidgets();
+	$displayvars['all_widgets'] = $all_widgets;
 
-// try {
-	$active_modules = $ucp->Modules->getActiveModules();
-// } catch(\Exception $e) {
-// 	echo "<html><head><title>"._("UCP")."</title></head><body style='background-color: rgb(211, 234, 255);'><div style='border-radius: 5px;border: 1px solid black;text-align: center;padding: 5px;width: 90%;margin: auto;left: 0px;right: 0px;background-color: rgba(53, 77, 255, 0.18);'>"._('There was an error trying to load UCP').":<br>".$e->getMessage()."</div></body></html>";
-// 	die();
-// }
-//TIME: 0.37255001068115
+	$all_simple_widgets = $ucp->Dashboards->getAllSimpleWidgets();
+	$displayvars['all_simple_widgets'] = $all_simple_widgets;
 
-$all_simple_widgets = $ucp->Dashboards->getAllSimpleWidgets();
-
-//TIME: 1.2794749736786
-
-
-//Simple widgets by user
-$usw = (array)json_decode((string) $ucp->Dashboards->getSimpleLayout(),true);
-$user_small_widgets = [];
-foreach($usw as $id => $widget) {
-	$name = ucfirst(strtolower((string) $widget['rawname']));
-	$id = $widget['id'];
-	$info = $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']] ?? '';
-	$icon = !empty($all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon']) ? $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon'] : ($all_simple_widgets['widget'][$name]['icon'] ?? '');
-	$display = $all_simple_widgets['widget'][$name]['display'] ?? '';
-	$user_small_widgets[$id] = $widget;
-	$user_small_widgets[$id]['widget_name'] = $info['display'] ?? $widget['widget_type_id'];
-	$user_small_widgets[$id]['name'] = $display;
-	$user_small_widgets[$id]['hasSettings'] = $info['hasSettings'] ?? false;
-	$user_small_widgets[$id]['icon'] = $icon;
+	//Simple widgets by user
+	$usw = (array)json_decode((string) $ucp->Dashboards->getSimpleLayout(), true);
+	$user_small_widgets = [];
+	foreach ($usw as $id => $widget) {
+		$name = ucfirst(strtolower((string) $widget['rawname']));
+		$id = $widget['id'];
+		$info = $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']] ?? '';
+		$icon = !empty($all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon']) ? $all_simple_widgets['widget'][$name]['list'][$widget['widget_type_id']]['icon'] : ($all_simple_widgets['widget'][$name]['icon'] ?? '');
+		$display = $all_simple_widgets['widget'][$name]['display'] ?? '';
+		$user_small_widgets[$id] = $widget;
+		$user_small_widgets[$id]['widget_name'] = $info['display'] ?? $widget['widget_type_id'];
+		$user_small_widgets[$id]['name'] = $display;
+		$user_small_widgets[$id]['hasSettings'] = $info['hasSettings'] ?? false;
+		$user_small_widgets[$id]['icon'] = $icon;
+	}
+	$displayvars['user_small_widgets'] = $user_small_widgets;
 }
+
+$active_modules = $ucp->Modules->getActiveModules();
 
 $user_dashboards = $ucp->Dashboards->getDashboards();
 foreach($user_dashboards as $dashboard_info){
@@ -166,14 +162,8 @@ if(!empty($_REQUEST["dashboard"])){
 	}
 }
 
-//TIME: 1.2543160915375
-
-$displayvars['all_simple_widgets'] = $all_simple_widgets;
-
 $displayvars['active_dashboard'] = $active_dashboard_id;
 $displayvars['user_dashboards'] = $user_dashboards;
-
-$displayvars['user_small_widgets'] = $user_small_widgets;
 
 /***********************/
 /* DASHBOARD SELECTION */
@@ -275,8 +265,6 @@ foreach($mods as $m) {
 $ucp->Modgettext->push_textdomain("ucp");
 
 if(!empty($user["id"])) {
-	$all_widgets = $ucp->Dashboards->getAllWidgets();
-	$displayvars['all_widgets'] = $all_widgets;
 	// No footer for UCP dashboard after login
 	$displayvars['year'] = date('Y',time());
 	$ucp->View->show_view(__DIR__ . '/views/dashboard-footer.php', $displayvars);
