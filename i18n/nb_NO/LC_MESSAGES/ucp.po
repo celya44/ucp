@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-28 10:04-0400\n"
+"POT-Creation-Date: 2024-05-29 02:48-0400\n"
 "PO-Revision-Date: 2015-08-30 14:46+0200\n"
 "Last-Translator: Vidar Skjelanger <vidar@unimicro.no>\n"
 "Language-Team: Norwegian Bokmål <http://weblate.freepbx.org/projects/freepbx/"
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Interface Settings"
 msgstr ""
 
-#: htdocs/index.php:251
+#: htdocs/index.php:241
 #, php-format
 msgid ""
 "Internet Explorer %s is not supported. Functionality will be deteriorated "
@@ -524,7 +524,7 @@ msgstr ""
 msgid "Invalid Login Credentials"
 msgstr "Ugyldig påloggingsinfo"
 
-#: htdocs/index.php:240
+#: htdocs/index.php:230
 msgid "Invalid Token"
 msgstr "Ugyldig token"
 
