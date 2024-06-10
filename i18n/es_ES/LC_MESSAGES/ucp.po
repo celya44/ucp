@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-29 02:48-0400\n"
+"POT-Creation-Date: 2024-06-10 02:27-0400\n"
 "PO-Revision-Date: 2016-06-07 10:27+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/ucp/"
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Interface Settings"
 msgstr ""
 
-#: htdocs/index.php:241
+#: htdocs/index.php:244
 #, php-format
 msgid ""
 "Internet Explorer %s is not supported. Functionality will be deteriorated "
@@ -524,7 +524,7 @@ msgstr ""
 msgid "Invalid Login Credentials"
 msgstr "Credenciales de acceso inválidas"
 
-#: htdocs/index.php:230
+#: htdocs/index.php:233
 msgid "Invalid Token"
 msgstr "Llave inválida"
 
