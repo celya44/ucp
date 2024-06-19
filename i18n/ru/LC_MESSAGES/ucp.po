@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-10 02:27-0400\n"
+"POT-Creation-Date: 2024-06-19 05:34-0400\n"
 "PO-Revision-Date: 2017-05-04 03:17+0200\n"
 "Last-Translator: Evgeniy <yen81@mail.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/ucp/ru/"
@@ -99,7 +99,7 @@ msgstr ""
 msgid "ABC"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:218
+#: htdocs/views/dashboard-footer.php:219
 msgid "Accept"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Admin"
 msgstr "Администратор"
 
-#: htdocs/views/dashboard-footer.php:229
+#: htdocs/views/dashboard-footer.php:230
 msgid "Alert"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "Call"
 msgstr ""
 
 #: htdocs/views/dashboard-footer.php:22 htdocs/views/dashboard-footer.php:43
-#: htdocs/views/dashboard-footer.php:167 htdocs/views/dashboard-footer.php:217
+#: htdocs/views/dashboard-footer.php:168 htdocs/views/dashboard-footer.php:218
 msgid "Cancel"
 msgstr ""
 
@@ -237,7 +237,7 @@ msgid ""
 "dashboard."
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:242 htdocs/views/forgot.php:15
+#: htdocs/views/dashboard-footer.php:243 htdocs/views/forgot.php:15
 msgid "Close"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Company"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:208
+#: htdocs/views/dashboard-footer.php:209
 msgid "Confirm Action"
 msgstr ""
 
@@ -501,7 +501,7 @@ msgstr ""
 msgid "Interface Settings"
 msgstr ""
 
-#: htdocs/index.php:244
+#: htdocs/index.php:247
 #, php-format
 msgid ""
 "Internet Explorer %s is not supported. Functionality will be deteriorated "
@@ -522,7 +522,7 @@ msgstr ""
 msgid "Invalid Login Credentials"
 msgstr ""
 
-#: htdocs/index.php:233
+#: htdocs/index.php:236
 msgid "Invalid Token"
 msgstr ""
 
@@ -1182,7 +1182,7 @@ msgstr ""
 msgid "Widget Removal"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:177
+#: htdocs/views/dashboard-footer.php:178
 #: htdocs/modules/Ucptour/assets/js/global.js:228
 msgid "Widget Settings"
 msgstr ""

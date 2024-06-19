@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-10 02:27-0400\n"
+"POT-Creation-Date: 2024-06-19 05:34-0400\n"
 "PO-Revision-Date: 2018-08-08 11:42+0000\n"
 "Last-Translator: Petr Varvarovsky <petrv@atlantis.cz>\n"
 "Language-Team: Czech <http://*/projects/freepbx/ucp/cs/>\n"
@@ -120,7 +120,7 @@ msgstr "Ovládací panel lze smazat kliknutím na tlačítko '%s'"
 msgid "ABC"
 msgstr "ABC"
 
-#: htdocs/views/dashboard-footer.php:218
+#: htdocs/views/dashboard-footer.php:219
 msgid "Accept"
 msgstr "Potvrdit"
 
@@ -161,7 +161,7 @@ msgstr "Přidání ovládacího panelu"
 msgid "Admin"
 msgstr "Administrator"
 
-#: htdocs/views/dashboard-footer.php:229
+#: htdocs/views/dashboard-footer.php:230
 msgid "Alert"
 msgstr "Upozornění"
 
@@ -229,7 +229,7 @@ msgid "Call"
 msgstr "Volat"
 
 #: htdocs/views/dashboard-footer.php:22 htdocs/views/dashboard-footer.php:43
-#: htdocs/views/dashboard-footer.php:167 htdocs/views/dashboard-footer.php:217
+#: htdocs/views/dashboard-footer.php:168 htdocs/views/dashboard-footer.php:218
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -267,7 +267,7 @@ msgid ""
 msgstr ""
 "Kliknutím na symbol '%s' přidáte tento widget na aktuálně aktivní panel."
 
-#: htdocs/views/dashboard-footer.php:242 htdocs/views/forgot.php:15
+#: htdocs/views/dashboard-footer.php:243 htdocs/views/forgot.php:15
 msgid "Close"
 msgstr "Zavřít"
 
@@ -275,7 +275,7 @@ msgstr "Zavřít"
 msgid "Company"
 msgstr "Firma"
 
-#: htdocs/views/dashboard-footer.php:208
+#: htdocs/views/dashboard-footer.php:209
 msgid "Confirm Action"
 msgstr "Potvrdit akci"
 
@@ -538,7 +538,7 @@ msgstr "Instalace / aktualizace požadovaných knihoven. Může to chvíli trvat
 msgid "Interface Settings"
 msgstr "Nastavení rozhraní"
 
-#: htdocs/index.php:244
+#: htdocs/index.php:247
 #, php-format
 msgid ""
 "Internet Explorer %s is not supported. Functionality will be deteriorated "
@@ -561,7 +561,7 @@ msgstr "Neplatné zařízení"
 msgid "Invalid Login Credentials"
 msgstr "Neplatné přihlašovací údaje"
 
-#: htdocs/index.php:233
+#: htdocs/index.php:236
 msgid "Invalid Token"
 msgstr "Neplatný token"
 
@@ -1268,7 +1268,7 @@ msgstr "Umístění widgetu"
 msgid "Widget Removal"
 msgstr "Odstranění widgetu"
 
-#: htdocs/views/dashboard-footer.php:177
+#: htdocs/views/dashboard-footer.php:178
 #: htdocs/modules/Ucptour/assets/js/global.js:228
 msgid "Widget Settings"
 msgstr "Nastavení widgetu"
