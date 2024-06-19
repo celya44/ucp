@@ -119,11 +119,12 @@
 									<div class="row mx-1">
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
 											<div class="list-group">
-												<?php $first = true; foreach($all_simple_widgets["widget"] as $widget_category_info){ ?>
+												<?php $first = true; 
+				if (isset($all_simple_widgets["widget"])) {foreach($all_simple_widgets["widget"] as $widget_category_info){ ?> 
 													<a href="#" class="list-group-item text-center <?php echo ($first) ? "active" : ""; ?>" data-id="small-<?php echo $widget_category_info['rawname']?>">
 														<h4 class="<?php echo $widget_category_info["icon"]; ?>"></h4><br/><?php echo $widget_category_info["display"]; ?>
 													</a>
-												<?php $first = false; } ?>
+												<?php $first = false; }} ?>
 											</div>
 										</div>
 										<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">

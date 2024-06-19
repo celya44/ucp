@@ -115,6 +115,9 @@ if ( !isset($_SERVER['HTACCESS']) && preg_match("/apache/i", (string) $_SERVER['
 	}
 }
 
+$displayvars['all_widgets'] = [];
+$displayvars['all_simple_widgets'] = []; 
+
 if (!empty($user["id"])) {
 	$all_widgets = $ucp->Dashboards->getAllWidgets();
 	$displayvars['all_widgets'] = $all_widgets;
