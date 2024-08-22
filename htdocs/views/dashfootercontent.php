@@ -17,7 +17,7 @@ $html .= '<div class="col-md-4">
 	<a target="_blank" href="'
 	. $amp_conf['BRAND_IMAGE_FREEPBX_LINK_FOOT']
 	. '" >'
-	. '<img id="footer_logo1" src="' . $amp_conf['BRAND_IMAGE_FREEPBX_FOOT'] . $version_tag
+	. '<img id="footer_logo1" src="' . $amp_conf['BRAND_IMAGE_FREEPBX_FOOT'] ?? 'images/freepbx_small.png' . $version_tag
 	. '" alt="' . $amp_conf['BRAND_FREEPBX_ALT_FOOT'] . '"/>
 	</a>
 	</div>';
