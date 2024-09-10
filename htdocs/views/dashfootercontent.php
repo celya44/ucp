@@ -13,7 +13,7 @@ if ($amp_conf['FORCE_JS_CSS_IMG_DOWNLOAD']) {
 
 // BRAND_IMAGE_FREEPBX_FOOT based on condtion 
 $footer_img ='';
-if(isset($amp_conf['BRAND_IMAGE_FREEPBX_FOOT'])){
+if(isset($amp_conf['BRAND_IMAGE_FREEPBX_FOOT']) && !empty($amp_conf['BRAND_IMAGE_FREEPBX_FOOT'])){
 $footer_img = $amp_conf['BRAND_IMAGE_FREEPBX_FOOT'];
 }else{
 	$footer_img = 'images/freepbx_small.png';
