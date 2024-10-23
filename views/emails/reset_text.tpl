@@ -1,10 +1,14 @@
 Hello %fname%,
 
-We have received new password request for your account (%username%).
-If this request was initiated by you, please click on following link and change your password:
+We have received a password reset request for your account: %username%.
+If this request wasn't initiated by you, you can safely disregard this message.
+
+Please click on following link to change your password:
+
 %link%
 
-This request is valid until %valid%
+This request is valid until: %valid%
 
-Thanks,
+Sincerely,
+
 The %brand% Team

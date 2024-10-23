@@ -22,6 +22,7 @@
 		*16.50.7* 2023-08-17 Correction et mis à jour du CAS
 		*16.50.6* 2023-08-08 Corrige le serveur Nodejs qui se réactive à chaque mise à jour
 		*16.50.5* 20230330 Mise à jour upstream
+		*16.0.38.2* Github issue#19 Improving reset password email template
 		*16.0.38.1* bump 
 		*16.0.38* FREEPBX-24070 
 		*16.0.37* FREEPBX-24083 
