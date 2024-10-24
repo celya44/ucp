@@ -31,9 +31,10 @@
  *       echo $xml->saveXML();
  */
 
+#[\AllowDynamicProperties]
 class Array2XML2 {
 
-    private static $xml = null;
+    private static ?\DomDocument $xml = null;
 	private static $encoding = 'UTF-8';
 
     /**
@@ -54,7 +55,7 @@ class Array2XML2 {
      * @param array $arr - aray to be converterd
      * @return DomDocument
      */
-    public static function &createXML($node_name, $arr=array()) {
+    public static function &createXML($node_name, $arr=[]) {
         $xml = self::getXMLRoot();
         $xml->appendChild(self::convert($node_name, $arr));
 
@@ -68,7 +69,7 @@ class Array2XML2 {
      * @param array $arr - aray to be converterd
      * @return DOMNode
      */
-    private static function &convert($node_name, $arr=array()) {
+    private static function &convert($node_name, $arr=[]) {
 
         //print_arr($node_name);
         $xml = self::getXMLRoot();
@@ -158,6 +159,6 @@ class Array2XML2 {
      */
     private static function isValidTagName($tag){
         $pattern = '/^[a-z_]+[a-z0-9\:\-\.\_]*[^:]*$/i';
-        return preg_match($pattern, $tag, $matches) && $matches[0] == $tag;
+        return preg_match($pattern, (string) $tag, $matches) && $matches[0] == $tag;
     }
 }

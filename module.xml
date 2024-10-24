@@ -2,74 +2,19 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>16.50.15</version>
+	<version>17.50.1</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
 	<description>
 		The user control panel is a way for users to control call handling and personal settings from a web browser.
 	</description>
-  	<more-info>https://wiki.freepbx.org/pages/viewpage.action?pageId=28180526</more-info>
+  	<more-info>https://sangomakb.atlassian.net/wiki/spaces/PG/pages/38896213/User+Control+Panel+UCP</more-info>
 	<changelog>
-		*16.50.15* 2024-05-28 Update AMQP library
-		*16.50.14* 2024-05-07 L expiration du login peut etre configure avec UCPSESSIONTIMEOUT
-		*16.50.13* 2023-11-14 Corrige le serveur NodeJS qui se réactive à chaque mise à jour, pour de bon cette fois ci
-		*16.50.12* 2023-10-24 Affiche une alerte si la librairie php-cas n'est pas installée lorsqu'elle est requise
-		*16.50.11* 2023-10-24 Poll uniquement si un widget et dans le dashboard actuel ou dans la sidebar
-		*16.50.10* 2023-10-23 Bloque la configuration des widgets lorsque l'utilisateur est restreint
-		*16.50.9* 2023-10-20 Corrige une erreur sur l'initialisation du CAS
-		*16.50.8* 2023-10-04 Les droits des utilisateurs peuvent maintenant être restreints
-		*16.50.7* 2023-08-17 Correction et mis à jour du CAS
-		*16.50.6* 2023-08-08 Corrige le serveur Nodejs qui se réactive à chaque mise à jour
-		*16.50.5* 20230330 Mise à jour upstream
-		*16.0.38.2* Github issue#19 Improving reset password email template
-		*16.0.38.1* bump 
-		*16.0.38* FREEPBX-24070 
-		*16.0.37* FREEPBX-24083 
-		*16.0.36* FREEPBX-24071 Updated moment timezone library 
-		*16.0.35* Packaging of ver 16.0.35
-		*16.0.34* FREEI-5729 
-		*16.50.4* 20230303 Packaging of ver 16.50.4
-		*16.50.3* Fix ucp node install failure
-		*16.50.2* Fix missing module error 
-		*16.50.1* Support for AMQP and CAS added
-		*16.0.33* FREEI-5572 
-		*16.0.32* FREEI-4700 Integrated password management 
-		*16.0.31* FREEI-5111 
-		*16.0.30* Packaging of ver 16.0.30
-		*16.0.29* Packaging of ver 16.0.29
-		*16.0.28* FREEI-5396 
-		*16.0.27* Packaging of ver 16.0.27
-		*16.0.26* Packaging of ver 16.0.26
-		*16.0.25* Packaging of ver 16.0.25
-		*16.0.24* Packaging of ver 16.0.24
-		*16.0.23* FREEPBX-23654 
-		*16.0.22* Packaging of ver 16.0.22
-		*16.0.21* Packaging of ver 16.0.21
-		*16.0.20*  Reverting bootstrap and dependent libs fixes
-		*16.0.19.4* Packaging of ver 16.0.19.4
-		*16.0.19.3* FREEI-2496 Added branding footer to ucp dashboard and login page 
-		*16.0.19.2* Packaging of ver 16.0.19.2
-		*16.0.19.1* FREEPBX-23428 UCP password reset link valid until date and time showing
-		*16.0.19* FREEI-4412 and FREEI-4572 
-		*16.0.18* SCD-104 updated sortable library 
-		*16.0.17* FREEI-4235 UCP error: MySQL server has gone away code: 2006 
-		*16.0.16* SCD-21 password reset page that can be reached by a url 
-		*16.0.15* FREEI-3374 Vuln-001 Stored Cross-Site Scripting 
-		*16.0.14* FREEI-3161 Add forgot password check 
-		*16.0.13* FREEI-3762 fixed the issue by creating the compiled minified js file upon ucp installation itself 
-		*16.0.12* FREEI-3369 Adding UCP template feature 
-		*16.0.11* FREEI-3551 
-		*16.0.10* FREEI-3161 Need userman password validation rules 
-		*16.0.9* FREEI-3218 Can get valid email address/login name from UCP forgot password form 
-		*16.0.8* Packaging of ver 16.0.8
-		*16.0.7* FREEI-2467-ucp-url-error 
-		*16.0.6* FREEI-2368 fwconsole cannot parse AMPDBHOST with different port 
-		*16.0.5* Packaging of ver 16.0.5
-		*16.0.4* FREEI-1784 Changing the logo,favicon [ucp] 
-		*16.0.3* FREEI-1638 UCP daemon not running - should be : disabled in advanced settings 
-		*16.0.2* FREEI-1495 UCP phone incorrectly labeled as : Softphone (Zulu) 
-		*16.0.1alpha1* Initial Release
+		*17.50.1* Initial Celya Release 
+		*17.0.4.22* bump 
+		*17.0.4.20* Github issue#19 Improving reset password email template 
+		*17.0.1* Initial Release
 	</changelog>
 	<category>Admin</category>
 	<menuitems>
@@ -79,7 +24,7 @@
 	    <install>install.inc.php</install>
 	</fileinclude>
 	<supported>
-		<version>16.0</version>
+		<version>17.0</version>
 	</supported>
 	<hooks>
 		<userman class="Userman" namespace="FreePBX\modules">
@@ -121,10 +66,10 @@
 		</table>
 	</database>
 	<depends>
-		<module>userman ge 16.0.18</module>
-		<module>core ge 16.0.56.4</module>
-		<version>16.0.37</version>
-		<module>pm2 ge 16.0.4</module>
-		<module>certman ge 16.0.13</module>
+		<module>userman ge 17.0.1</module>
+		<module>core ge 17.0.1</module>
+		<version>17.0.1</version>
+		<module>pm2 ge 17.0.1</module>
+		<module>certman ge 17.0.1</module>
 	</depends>
 </module>

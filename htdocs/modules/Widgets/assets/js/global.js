@@ -379,7 +379,7 @@ var WidgetsC = Class.extend({
 										'</div>' +
 									'</div>' +
 								'</div>' +
-								'<div class="widget-content container">'+widget_content+'</div>' +
+			'<div class="widget-content">' + widget_content + '</div>' +
 							'</div>' +
 							'<div class="back">' +
 								'<div class="widget-title settings-title">' +
@@ -685,12 +685,20 @@ var WidgetsC = Class.extend({
 					uuid: uuid
 				},
 				function( data ) {
-					if(typeof data.html !== "undefined"){
-						content_object.html(data.html);
+					
+					if (data.hasError || typeof data.html !== "undefined") {
+						let widget_html = data.html;
+						if (data.hasError) {
+							widget_html = '';
+							data.errorMessages.forEach(errorMessage => {
+								widget_html += '<div class="alert alert-danger">'+_(errorMessage)+'</div>';
+							});
+						}
+						content_object.html(widget_html);
 
 						UCP.callModuleByMethod(clicked_module,"displaySimpleWidget",widget_id);
 						$(document).trigger("post-body.simplewidget",[ widget_id ]);
-					}else {
+					} else {
 						UCP.showAlert(_("There was an error getting the widget information, try again later"), "danger");
 					}
 				}).fail(function(jqXHR, textStatus, errorThrown) {
@@ -1080,20 +1088,20 @@ var WidgetsC = Class.extend({
 						uuid: new_widget_id
 					},
 					function( data ) {
-
-						$("#add_widget").modal("hide");
-
-						if(typeof data.html !== "undefined"){
+						if (typeof data.html !== "undefined") {
+							$("#add_widget").modal("hide");
 							//So first we go the HTML content to add it to the widget
 							var widget_html = data.html;
 							var full_widget_html = $this.widget_layout(new_widget_id, widget_module_name, widget_name, widget_id, widget_rawname, widget_has_settings, widget_html, resizable, false);
 							var grid = $('.grid-stack').data('gridstack');
 							//We are adding the widget always on the position 1,1
 							grid.addWidget($(full_widget_html), 1, 1, default_size_x, default_size_y, true, min_size_x, max_size_x, min_size_y, max_size_y);
-							grid.resizable($("div[data-id='"+new_widget_id+"']"), resizable);
-							UCP.callModuleByMethod(widget_rawname,"displayWidget",new_widget_id,$this.activeDashboard);
-							$(document).trigger("post-body.widgets",[ new_widget_id, $this.activeDashboard ]);
-						}else {
+							grid.resizable($("div[data-id='" + new_widget_id + "']"), resizable);
+							UCP.callModuleByMethod(widget_rawname, "displayWidget", new_widget_id, $this.activeDashboard);
+							$(document).trigger("post-body.widgets", [new_widget_id, $this.activeDashboard]);
+						} else if (data.hasError) {
+							UCP.showAlert(data.errorMessages.join('<br/>'),'warning');
+						} else {
 							UCP.showAlert(_("There was an error getting the widget information, try again later"), "danger");
 						}
 					}).always(function() {
@@ -1150,6 +1158,7 @@ var WidgetsC = Class.extend({
 						$("#add_widget").modal("hide");
 
 						if(typeof data.html !== "undefined"){
+							$("#add_widget").modal("hide");
 							//get small widget layout
 							var full_widget_html = $this.smallWidgetLayout(new_widget_id, widget_rawname, widget_name, widget_id, widget_icon);
 							//get small widget menu layout
@@ -1175,7 +1184,9 @@ var WidgetsC = Class.extend({
 
 							//save side bar
 							$this.saveSidebarContent();
-						}else {
+						} else if (data.hasError) {
+							UCP.showAlert(data.errorMessages.join('<br/>'),'warning');
+						} else {
 							UCP.showAlert(_("There was an error getting the widget information, try again later"), "danger");
 						}
 					}).always(function() {
@@ -1231,8 +1242,11 @@ var WidgetsC = Class.extend({
 
 				var widget_html = data.html;
 
-				if(typeof data.html === "undefined"){
-					widget_html = '<div class="alert alert-danger">'+_('Something went wrong getting the content of the widget')+'</div>';
+				if (data.hasError) {
+					widget_html = '';
+					data.errorMessages.forEach(errorMessage => {
+						widget_html += '<div class="alert alert-danger">'+_(errorMessage)+'</div>';
+					});
 				}
 
 				widget_content_object.html(widget_html);
@@ -1524,12 +1538,12 @@ var WidgetsC = Class.extend({
 				//get widget content
 				var full_widget_html = $this.widget_layout(widget.id, widget.widget_module_name, widget.name, widget.widget_type_id, widget.rawname, widget.has_settings, widget_html, widget.resizable, widget.locked);
 				//get max/min size of this widget
-				var min_size_x = (typeof allWidgets[cased].list[widget.widget_type_id].minsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].minsize.width !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].minsize.width : null;
-				var min_size_y = (typeof allWidgets[cased].list[widget.widget_type_id].minsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].minsize.height !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].minsize.height : null;
-				var max_size_x = (typeof allWidgets[cased].list[widget.widget_type_id].maxsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].maxsize.width !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].maxsize.width : null;
-				var max_size_y = (typeof allWidgets[cased].list[widget.widget_type_id].maxsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].maxsize.height !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].maxsize.height : null;
+				var min_size_x = allWidgets[cased].list.length ? ((typeof allWidgets[cased].list[widget.widget_type_id].minsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].minsize.width !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].minsize.width : null) : null;
+				var min_size_y = allWidgets[cased].list.length ? ((typeof allWidgets[cased].list[widget.widget_type_id].minsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].minsize.height !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].minsize.height : null) : null;
+				var max_size_x = allWidgets[cased].list.length ? ((typeof allWidgets[cased].list[widget.widget_type_id].maxsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].maxsize.width !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].maxsize.width : null) : null;
+				var max_size_y = allWidgets[cased].list.length ? ((typeof allWidgets[cased].list[widget.widget_type_id].maxsize !== "undefined" && typeof allWidgets[cased].list[widget.widget_type_id].maxsize.height !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].maxsize.height : null) : null;
 				//is this widget resizable?
-				var resizable = (typeof allWidgets[cased].list[widget.widget_type_id].resizable !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].resizable : true;
+				var resizable = allWidgets[cased].list.length ? ((typeof allWidgets[cased].list[widget.widget_type_id].resizable !== "undefined") ? allWidgets[cased].list[widget.widget_type_id].resizable : true) : true;
 
 				//now add the widget
 				gridstack.addWidget($(full_widget_html), widget.size_x, widget.size_y, widget.col, widget.row, false, min_size_x, max_size_x, min_size_y, max_size_y);
@@ -1554,7 +1568,18 @@ var WidgetsC = Class.extend({
 					},
 					function( data ) {
 						//set the content from what we got
-						$(".grid-stack .grid-stack-item[data-id="+widget.id+"] .widget-content").html(data.html);
+						const widget_content_object = $(".grid-stack .grid-stack-item[data-id="+widget.id+"] .widget-content");
+						
+						let widget_html = data.html;
+						if (data.hasError) {
+							widget_html = '';
+							data.errorMessages.forEach(errorMessage => {
+								widget_html += '<div class="alert alert-danger">'+_(errorMessage)+'</div>';
+							});
+						}
+						
+						widget_content_object.html(widget_html);
+
 						//execute module method
 						UCP.callModuleByMethod(widget.rawname,"displayWidget",widget.id,$this.activeDashboard);
 						//execute resize module method

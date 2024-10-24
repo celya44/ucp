@@ -7,14 +7,15 @@
  * @author Philippe Lindheimer
  */
 namespace UCP;
+#[\AllowDynamicProperties]
 class Modgettext extends UCP {
 
 	// This hash maps a given module name to the initialized txt domain it should use.
 	// If the hash is not initialized then it will be setup the first time it is attempted.
-	private $tdhash = array();
+	private array $tdhash = [];
 
 	// stack for saved textdomains
-	private $textdomain_stack = array();
+	private array $textdomain_stack = [];
 
 
 	public function __construct($UCP) {

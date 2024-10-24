@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 03:22+0000\n"
+"POT-Creation-Date: 2024-09-09 08:24-0400\n"
 "PO-Revision-Date: 2016-06-01 07:08+0200\n"
 "Last-Translator: Hans <info@hansvaneijsden.nl>\n"
 "Language-Team: Dutch <http://weblate.freepbx.org/projects/freepbx/ucp/nl/>\n"
@@ -24,14 +24,18 @@ msgstr ""
 msgid "  abc  "
 msgstr ""
 
-#: htdocs/views/dashfootercontent.php:28
+#: htdocs/views/dashfootercontent.php:37
 #, php-format
 msgid "%s %s is licensed under the %s"
 msgstr ""
 
-#: htdocs/views/dashfootercontent.php:27
+#: htdocs/views/dashfootercontent.php:36
 #, php-format
 msgid "%s is a registered trademark of"
+msgstr ""
+
+#: htdocs/assets/js/emojionearea-3.4.2.min.js:9
+msgid ").replace(/"
 msgstr ""
 
 #: htdocs/assets/js/lodash-4.17.2.js:15199
@@ -64,6 +68,10 @@ msgid ""
 "     * // => "
 msgstr ""
 
+#: htdocs/assets/js/jquery-ui-1.13.2.min.js:6
+msgid "+t,e.props.alpha={idx:3,type:"
+msgstr ""
+
 #: htdocs/index.php:93
 msgid ".htaccess files are disabled on this webserver. Please enable them"
 msgstr ""
@@ -75,6 +83,10 @@ msgid ".htaccess files are not supported on this webserver."
 msgstr ""
 "Het gebruik van .htaccess-bestanden wordt niet ondersteund door deze "
 "webserver."
+
+#: htdocs/assets/js/socket.io-4.7.4.min.js:6
+msgid ".split("
+msgstr ""
 
 #: htdocs/assets/js/moment-with-locales-2.20.1.min.js:1
 msgid ": "
@@ -89,7 +101,7 @@ msgstr ""
 msgid "ABC"
 msgstr "ABC"
 
-#: htdocs/views/dashboard-footer.php:202
+#: htdocs/views/dashboard-footer.php:219
 msgid "Accept"
 msgstr ""
 
@@ -101,11 +113,11 @@ msgstr ""
 msgid "Active Sessions"
 msgstr "Actieve Sessies"
 
-#: htdocs/views/dashboard-footer.php:13
+#: htdocs/views/dashboard-footer.php:12
 msgid "Add Dashboard"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:55
+#: htdocs/views/dashboard-footer.php:54
 msgid "Add Widget"
 msgstr ""
 
@@ -126,7 +138,11 @@ msgstr ""
 msgid "Adding a dashboard"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:214
+#: ucp.i18n.php:6
+msgid "Admin"
+msgstr "Admin"
+
+#: htdocs/views/dashboard-footer.php:230
 msgid "Alert"
 msgstr ""
 
@@ -168,7 +184,7 @@ msgstr ""
 msgid "Allowed Extension Settings"
 msgstr "Toegestane Extensieinstellingen"
 
-#: htdocs/modules/Widgets/assets/js/global.js:889
+#: htdocs/modules/Widgets/assets/js/global.js:897
 msgid "Are you sure you want to delete this dashboard?"
 msgstr ""
 
@@ -176,7 +192,7 @@ msgstr ""
 msgid "Assign UCP Template"
 msgstr ""
 
-#: Ucp.class.php:1302
+#: Ucp.class.php:1212
 #, php-format
 msgid ""
 "Asterisk home dir (%s) doesn't exist, and, ASTSPOOLDIR doesn't exist. "
@@ -192,7 +208,7 @@ msgid "Call"
 msgstr "Gesprek"
 
 #: htdocs/views/dashboard-footer.php:22 htdocs/views/dashboard-footer.php:43
-#: htdocs/views/dashboard-footer.php:151 htdocs/views/dashboard-footer.php:201
+#: htdocs/views/dashboard-footer.php:168 htdocs/views/dashboard-footer.php:218
 msgid "Cancel"
 msgstr ""
 
@@ -227,7 +243,7 @@ msgid ""
 "dashboard."
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:226 htdocs/views/forgot.php:15
+#: htdocs/views/dashboard-footer.php:243 htdocs/views/forgot.php:15
 msgid "Close"
 msgstr ""
 
@@ -235,7 +251,7 @@ msgstr ""
 msgid "Company"
 msgstr "Bedrijf"
 
-#: htdocs/views/dashboard-footer.php:193
+#: htdocs/views/dashboard-footer.php:209
 msgid "Confirm Action"
 msgstr ""
 
@@ -251,7 +267,7 @@ msgstr ""
 msgid "Create Dashboard"
 msgstr ""
 
-#: htdocs/views/dashfootercontent.php:34
+#: htdocs/views/dashfootercontent.php:44
 #, php-format
 msgid "Current module licensed under %s"
 msgstr ""
@@ -313,11 +329,11 @@ msgstr ""
 msgid "Delete a Dashboard"
 msgstr ""
 
-#: Ucp.class.php:1160
+#: Ucp.class.php:1072
 msgid "Deleted Session"
 msgstr "Verwijderde Sessie"
 
-#: Ucp.class.php:426 Ucp.class.php:1003
+#: Ucp.class.php:384 Ucp.class.php:914
 msgid "Deleted User Session"
 msgstr "Verwijderde Gebruikerssessie"
 
@@ -329,13 +345,13 @@ msgstr ""
 msgid "Display Name"
 msgstr "Weergavenaam"
 
-#: Ucp.class.php:1474
+#: Ucp.class.php:1373
 #, php-format
 msgid "Don't know what %s is"
 msgstr ""
 
-#: Ucp.class.php:300 Ucp.class.php:326 Ucp.class.php:1255 Ucp.class.php:1259
-#: Ucp.class.php:1263 Ucp.class.php:1267
+#: Ucp.class.php:295 Ucp.class.php:321 Ucp.class.php:1167 Ucp.class.php:1171
+#: Ucp.class.php:1175 Ucp.class.php:1179
 msgid "Done"
 msgstr "Voltooid"
 
@@ -343,7 +359,7 @@ msgstr "Voltooid"
 msgid "Drop a new image here"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:34 htdocs/views/dashboard-footer.php:44
+#: htdocs/views/dashboard-footer.php:33 htdocs/views/dashboard-footer.php:44
 msgid "Edit Dashboard"
 msgstr ""
 
@@ -381,7 +397,7 @@ msgstr ""
 msgid "End of tour"
 msgstr ""
 
-#: htdocs/modules/Settings/Settings.class.php:148
+#: htdocs/modules/Settings/Settings.class.php:132
 msgid "English"
 msgstr "Engels"
 
@@ -396,16 +412,16 @@ msgstr ""
 "Niet gelukt om %s te installeren vanwege de volgende module(s) met "
 "conflicten: %s"
 
-#: Ucp.class.php:1384
+#: Ucp.class.php:1289
 #, php-format
 msgid "Failed to run: '%s'"
 msgstr ""
 
-#: Ucp.class.php:178
+#: Ucp.class.php:173
 msgid "Failed updating libraries!"
 msgstr ""
 
-#: Ucp.class.php:308
+#: Ucp.class.php:303
 msgid "Failed!"
 msgstr ""
 
@@ -413,7 +429,7 @@ msgstr ""
 msgid "Fax"
 msgstr "Fax"
 
-#: Ucp.class.php:181
+#: Ucp.class.php:176
 msgid "Finished updating libraries!"
 msgstr ""
 
@@ -437,19 +453,19 @@ msgstr "GHI"
 msgid "General"
 msgstr "Algemeen"
 
-#: Ucp.class.php:1265
+#: Ucp.class.php:1177
 msgid "Generating Main CSS..."
 msgstr "Genereren Hoofd-CSS..."
 
-#: Ucp.class.php:1261
+#: Ucp.class.php:1173
 msgid "Generating Main Scripts..."
 msgstr "Genereren Hoofd-Scripts..."
 
-#: Ucp.class.php:1257
+#: Ucp.class.php:1169
 msgid "Generating Module CSS..."
 msgstr "Genereren Module-CSS..."
 
-#: Ucp.class.php:1253
+#: Ucp.class.php:1165
 msgid "Generating Module Scripts..."
 msgstr "Genereren Module-Scripts..."
 
@@ -457,7 +473,7 @@ msgstr "Genereren Module-Scripts..."
 msgid "Hold"
 msgstr "Wacht"
 
-#: htdocs/modules/Home/Home.class.php:192
+#: htdocs/modules/Home/Home.class.php:211
 msgid "Home"
 msgstr "Home"
 
@@ -465,7 +481,7 @@ msgstr "Home"
 msgid "Home Phone"
 msgstr "Thuistelefoon"
 
-#: Ucp.class.php:156 Ucp.class.php:163
+#: Ucp.class.php:151 Ucp.class.php:158
 #, php-format
 msgid "Home directory [%s] is not writable"
 msgstr ""
@@ -475,7 +491,7 @@ msgid ""
 "How you would like your name displayed throughout UCP and Contact Manager"
 msgstr "Hoe je je naam weergegeven wilt laten worden in UCP en het Adresboek"
 
-#: Ucp.class.php:148
+#: Ucp.class.php:143
 #, php-format
 msgid "ICU version is: %s requirement is %s"
 msgstr ""
@@ -485,7 +501,7 @@ msgstr ""
 msgid "Inherit"
 msgstr "Erven"
 
-#: Ucp.class.php:168
+#: Ucp.class.php:163
 msgid "Installing/Updating Required Libraries. This may take a while..."
 msgstr ""
 
@@ -493,7 +509,7 @@ msgstr ""
 msgid "Interface Settings"
 msgstr ""
 
-#: htdocs/index.php:256
+#: htdocs/index.php:247
 #, php-format
 msgid ""
 "Internet Explorer %s is not supported. Functionality will be deteriorated "
@@ -502,25 +518,25 @@ msgstr ""
 "Internet Explorer %s wordt niet ondersteund. De functionaliteit wordt "
 "beperkt totdat je deze bijwerkt naar %s of hoger"
 
-#: htdocs/includes/User.class.php:107
+#: htdocs/includes/User.class.php:111
 msgid "Invalid"
 msgstr "Ongeldig"
 
-#: htdocs/modules/Home/Home.class.php:121
-#: htdocs/modules/Home/Home.class.php:141
-#: htdocs/modules/Home/Home.class.php:145
+#: htdocs/modules/Home/Home.class.php:151
+#: htdocs/modules/Home/Home.class.php:167
+#: htdocs/modules/Home/Home.class.php:172
 msgid "Invalid Device"
 msgstr "Ongeldig Apparaat"
 
-#: htdocs/includes/User.class.php:115
+#: htdocs/includes/User.class.php:119
 msgid "Invalid Login Credentials"
 msgstr "Ongeldige Login"
 
-#: htdocs/index.php:244
+#: htdocs/index.php:236
 msgid "Invalid Token"
 msgstr "Ongeldig Token"
 
-#: htdocs/modules/Widgets/Widgets.class.php:46
+#: htdocs/modules/Widgets/Widgets.class.php:47
 msgid "Invalid dashboard id"
 msgstr ""
 
@@ -566,11 +582,11 @@ msgstr "Mag deze gebruiker inloggen in UCP"
 msgid "Miscellaneous"
 msgstr "Diversen"
 
-#: htdocs/includes/Ajax.class.php:35
+#: htdocs/includes/Ajax.class.php:37
 msgid "Module or Command requested invalid"
 msgstr ""
 
-#: htdocs/includes/Ajax.class.php:74
+#: htdocs/includes/Ajax.class.php:81
 msgid "Module or Command were null. Check your code."
 msgstr "Module of commando was zonder inhoud. Check je code."
 
@@ -581,7 +597,7 @@ msgid ""
 "you want"
 msgstr ""
 
-#: Ucp.class.php:121
+#: Ucp.class.php:116
 #, php-format
 msgid ""
 "NPM version is: %s requirement is %s. Run 'yum upgrade nodejs' from the CLI "
@@ -597,15 +613,15 @@ msgstr ""
 msgid "No"
 msgstr "Nee"
 
-#: Ucp.class.php:117
+#: Ucp.class.php:112
 msgid "Node Package Manager is not installed"
 msgstr ""
 
-#: Ucp.class.php:105
+#: Ucp.class.php:100
 msgid "Node is not installed"
 msgstr ""
 
-#: Ucp.class.php:109
+#: Ucp.class.php:104
 #, php-format
 msgid ""
 "Node version is: %s requirement is %s. Run 'yum upgrade nodejs' from the CLI "
@@ -624,15 +640,15 @@ msgstr ""
 msgid "Nothing Entered"
 msgstr "Niets Ingevoerd"
 
-#: htdocs/includes/User.class.php:78
+#: htdocs/includes/User.class.php:81
 msgid "Nothing was Provided!"
 msgstr "Niets was ingegeven!"
 
-#: htdocs/views/header.php:54
+#: htdocs/views/header.php:59
 msgid "OFF"
 msgstr "UIT"
 
-#: htdocs/views/header.php:51
+#: htdocs/views/header.php:55
 msgid "ON"
 msgstr "AAN"
 
@@ -664,7 +680,7 @@ msgstr "PQRS"
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: Ucp.class.php:516
+#: Ucp.class.php:435
 #, php-format
 msgid "Password Reset Link (Valid Until: %s): %s"
 msgstr "Wachtwoord-resetlink (geldig tot: %s): %s"
@@ -674,7 +690,7 @@ msgstr "Wachtwoord-resetlink (geldig tot: %s): %s"
 msgid "Password Reset for: %s"
 msgstr "Wachtwoordreset voor: %s"
 
-#: htdocs/modules/Settings/views/pwd_alert.php:1 htdocs/views/forgot.php:9
+#: htdocs/modules/Settings/views/pwd_alert.php:1 htdocs/views/forgot.php:6
 msgid "Password does not match security policy."
 msgstr ""
 
@@ -686,15 +702,19 @@ msgstr ""
 msgid "Processing..."
 msgstr "Verwerken..."
 
-#: htdocs/modules/Home/Home.class.php:53
+#: htdocs/modules/Home/Home.class.php:44
 msgid "RSS Feeds"
 msgstr "RSS-Feeds"
+
+#: htdocs/modules/Home/Home.class.php:75
+msgid "RSS Feeds are not set."
+msgstr ""
 
 #: Api/Rest/Dashboard.php:12
 msgid "Read UCP Dashboard Information"
 msgstr ""
 
-#: Ucp.class.php:314
+#: Ucp.class.php:309
 msgid "Refreshing all UCP Assets, this could take a while..."
 msgstr "Alle UCP-onderdelen aan het vernieuwen, dit kan even duren..."
 
@@ -702,7 +722,7 @@ msgstr "Alle UCP-onderdelen aan het vernieuwen, dit kan even duren..."
 msgid "Remember Me"
 msgstr "Onthoud Mij"
 
-#: htdocs/views/dashboard-header.php:83
+#: htdocs/views/dashboard-header.php:108
 #: htdocs/modules/Widgets/assets/js/global.js:446
 msgid "Remove Widget"
 msgstr ""
@@ -715,7 +735,7 @@ msgstr "Wachtwoord Resetten"
 msgid "Restart Tour"
 msgstr ""
 
-#: Ucp.class.php:1324
+#: Ucp.class.php:1228
 #, php-format
 msgid "Running (Uptime: %s)"
 msgstr ""
@@ -790,51 +810,47 @@ msgid ""
 "shown for each widget"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:1196
-msgid "Something went wrong getting the content of the widget"
-msgstr ""
-
-#: htdocs/modules/Widgets/assets/js/global.js:1238
-#: htdocs/modules/Widgets/assets/js/global.js:1276
+#: htdocs/modules/Widgets/assets/js/global.js:1252
+#: htdocs/modules/Widgets/assets/js/global.js:1290
 msgid "Something went wrong getting the settings from the widget"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:863
-#: htdocs/modules/Widgets/assets/js/global.js:917
+#: htdocs/modules/Widgets/assets/js/global.js:871
+#: htdocs/modules/Widgets/assets/js/global.js:925
 msgid "Something went wrong removing the dashboard"
 msgstr ""
 
-#: Ucp.class.php:1379
+#: Ucp.class.php:1284
 #, php-format
 msgid "Started UCP Node Server. PID is %s"
 msgstr ""
 
-#: Ucp.class.php:310
+#: Ucp.class.php:305
 #, php-format
 msgid "Started with PID %s!"
 msgstr ""
 
-#: Ucp.class.php:1350
+#: Ucp.class.php:1255
 msgid "Starting UCP Node Server..."
 msgstr ""
 
-#: Ucp.class.php:305
+#: Ucp.class.php:300
 msgid "Starting new UCP Node Process..."
 msgstr ""
 
-#: Ucp.class.php:1451
+#: Ucp.class.php:1357
 msgid "Stopped UCP Node Server"
 msgstr ""
 
-#: Ucp.class.php:1420
+#: Ucp.class.php:1326
 msgid "Stopping UCP Node Server"
 msgstr ""
 
-#: Ucp.class.php:298 Ucp.class.php:324
+#: Ucp.class.php:293 Ucp.class.php:319
 msgid "Stopping old running processes..."
 msgstr ""
 
-#: htdocs/includes/User.class.php:86
+#: htdocs/includes/User.class.php:89
 msgid "Submitted"
 msgstr ""
 
@@ -843,7 +859,7 @@ msgstr ""
 msgid "Success!"
 msgstr ""
 
-#: Ucp.class.php:126
+#: Ucp.class.php:121
 msgid "System"
 msgstr ""
 
@@ -877,7 +893,7 @@ msgid ""
 "dashboard by clicking this symbol"
 msgstr ""
 
-#: htdocs/includes/Ajax.class.php:79
+#: htdocs/includes/Ajax.class.php:86
 #, php-format
 msgid "The class %s already existed. Ajax MUST load it, for security reasons"
 msgstr ""
@@ -917,9 +933,18 @@ msgstr ""
 "Het wachtwoord nodig om in te loggen in het User Control Panel en andere "
 "services"
 
-#: htdocs/assets/js/ucp.js:562
+#: htdocs/assets/js/ucp.js:575
 msgid "The session has expired and you are being forcibly logged out"
 msgstr ""
+
+#: ucp.i18n.php:8
+msgid ""
+"The user control panel is a way for users to control call handling and "
+"personal settings from a web browser."
+msgstr ""
+"Het User Control Panel is een manier voor gebruikers om het afhandelen van "
+"telefoongesprekken en andere persoonlijke instellingen via de browser te "
+"beheren."
 
 #: htdocs/modules/Settings/views/settings.php:20
 msgid "The username used to login to User Control Panel and other services"
@@ -937,18 +962,14 @@ msgid ""
 "widgets. Let's start with dashboard widgets"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:980
+#: htdocs/modules/Widgets/assets/js/global.js:988
 msgid "There is no active dashboard to add widgets to"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:1058
-#: htdocs/modules/Widgets/assets/js/global.js:1140
+#: htdocs/modules/Widgets/assets/js/global.js:1066
+#: htdocs/modules/Widgets/assets/js/global.js:1151
 msgid "There was an error getting the widget information, try again later"
 msgstr ""
-
-#: htdocs/index.php:123
-msgid "There was an error trying to load UCP"
-msgstr "Er is een fout opgetreden tijdens het laden van UCP"
 
 #: htdocs/assets/js/ucp.js:33 htdocs/assets/js/ucp.js:48
 msgid "There was an error. See the console log for more details"
@@ -963,6 +984,10 @@ msgstr ""
 "Dit zijn de toegewezen en actieve extensies die toegang tot de "
 "extensieinstellingen hebben zoals Wisselgesprek, Doorschakelen, Find Me/"
 "Follow Me en meer"
+
+#: htdocs/modules/Home/Home.class.php:80
+msgid "This feed is not found in RSS Feed list."
+msgstr ""
 
 #: htdocs/modules/Ucptour/assets/js/global.js:244
 msgid ""
@@ -1012,7 +1037,7 @@ msgstr ""
 msgid "To remove this widget from the side bar click 'Remove Widget'"
 msgstr ""
 
-#: htdocs/index.php:123
+#: ucp.i18n.php:10
 msgid "UCP"
 msgstr "UCP"
 
@@ -1020,29 +1045,29 @@ msgstr "UCP"
 msgid "UCP Admin"
 msgstr "UCP Beheer"
 
-#: Ucp.class.php:1310
+#: Ucp.class.php:1219
 msgid "UCP Daemon"
 msgstr ""
 
-#: Ucp.class.php:1318
+#: Ucp.class.php:1222
 msgid "UCP Node Disabled in Advanced Settings."
 msgstr ""
 
-#: Ucp.class.php:1455
+#: Ucp.class.php:1361
 #, php-format
 msgid "UCP Node Server Failed: %s"
 msgstr ""
 
-#: Ucp.class.php:1344
+#: Ucp.class.php:1249
 #, php-format
 msgid "UCP Node Server has already been running on PID %s for %s"
 msgstr ""
 
-#: Ucp.class.php:1413
+#: Ucp.class.php:1319
 msgid "UCP Node Server is not running"
 msgstr ""
 
-#: Ucp.class.php:1326
+#: Ucp.class.php:1230
 msgid "UCP Node is not running"
 msgstr ""
 
@@ -1068,11 +1093,16 @@ msgstr ""
 "UCP, een afkorting voor User Control Panel, is een gebruikersinterface voor "
 "FreePBX."
 
-#: htdocs/includes/User.class.php:92
+#: htdocs/assets/js/ucp.js:488
+#, perl-format
+msgid "Unable to connect to the UCP Node Server.<br>%s"
+msgstr ""
+
+#: htdocs/includes/User.class.php:95
 msgid "Unable to send Password Reset Email"
 msgstr ""
 
-#: Ucp.class.php:1312
+#: Ucp.class.php:1219
 msgid "Unknown"
 msgstr ""
 
@@ -1104,12 +1134,13 @@ msgstr ""
 msgid "Use PBX Timezone"
 msgstr ""
 
-#: htdocs/modules/Settings/Settings.class.php:191
+#: htdocs/modules/Settings/Settings.class.php:163
 msgid "User"
 msgstr ""
 
-#: htdocs/views/forgot.php:27 htdocs/views/header.php:4
-#: htdocs/views/login.php:5 htdocs/modules/Widgets/assets/js/global.js:47
+#: htdocs/views/forgot.php:27 htdocs/views/header.php:6
+#: htdocs/views/login.php:5 ucp.i18n.php:4
+#: htdocs/modules/Widgets/assets/js/global.js:47
 msgid "User Control Panel"
 msgstr "Gebruikers Beheerpanel"
 
@@ -1117,7 +1148,7 @@ msgstr "Gebruikers Beheerpanel"
 msgid "User Control Panel Settings"
 msgstr "Instellingen User Control Panel"
 
-#: Ucp.class.php:512
+#: Ucp.class.php:432
 #, php-format
 msgid "User Control Panel: %s"
 msgstr "Gebruikers Beheerpanel: %s"
@@ -1126,7 +1157,7 @@ msgstr "Gebruikers Beheerpanel: %s"
 msgid "User Details"
 msgstr ""
 
-#: Ucp.class.php:361 Ucp.class.php:394
+#: Ucp.class.php:355 Ucp.class.php:369
 msgid "User Primary Extension"
 msgstr "Primaire Gebruikersextensie"
 
@@ -1142,7 +1173,7 @@ msgstr "Gebruikersnaam"
 msgid "WXYZ"
 msgstr "WXYZ"
 
-#: htdocs/views/header.php:70
+#: htdocs/views/header.php:78
 #, php-format
 msgid "Welcome %s"
 msgstr "Welkom %s"
@@ -1177,7 +1208,7 @@ msgstr ""
 msgid "Widget Removal"
 msgstr ""
 
-#: htdocs/views/dashboard-footer.php:162
+#: htdocs/views/dashboard-footer.php:178
 #: htdocs/modules/Ucptour/assets/js/global.js:228
 msgid "Widget Settings"
 msgstr ""
@@ -1186,7 +1217,7 @@ msgstr ""
 msgid "Widget Size"
 msgstr ""
 
-#: htdocs/modules/Widgets/Widgets.class.php:199
+#: htdocs/modules/Widgets/Widgets.class.php:192
 msgid "Widgets"
 msgstr ""
 
@@ -1243,11 +1274,11 @@ msgstr ""
 msgid "Yes"
 msgstr "Ja"
 
-#: htdocs/modules/Widgets/assets/js/global.js:1148
+#: htdocs/modules/Widgets/assets/js/global.js:1159
 msgid "You already have this widget on the side bar"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:1066
+#: htdocs/modules/Widgets/assets/js/global.js:1074
 msgid "You already have this widget on this dashboard"
 msgstr ""
 
@@ -1264,8 +1295,8 @@ msgid ""
 "this tour at any time in your User Settings"
 msgstr ""
 
-#: htdocs/modules/Widgets/Widgets.class.php:41
-#: htdocs/modules/Widgets/assets/js/global.js:908
+#: htdocs/modules/Widgets/Widgets.class.php:42
+#: htdocs/modules/Widgets/assets/js/global.js:916
 msgid "You have no dashboards. Click here to add one"
 msgstr ""
 
@@ -1273,7 +1304,7 @@ msgstr ""
 msgid "You just successfully logged in for the first time!"
 msgstr ""
 
-#: htdocs/modules/Widgets/assets/js/global.js:1386
+#: htdocs/modules/Widgets/assets/js/global.js:1400
 msgid "You must set a dashboard name!"
 msgstr ""
 
@@ -1352,7 +1383,7 @@ msgstr ""
 msgid "fred"
 msgstr ""
 
-#: Ucp.class.php:98
+#: Ucp.class.php:93
 msgid "gcc-c++ is not installed"
 msgstr ""
 
@@ -1367,11 +1398,11 @@ msgstr ""
 "dat de paden en mappen juist geconfigureerd zijn. Voor meer informatie zie: "
 "%s"
 
-#: Ucp.class.php:142
+#: Ucp.class.php:137
 msgid "icu is not installed. You need to run: yum install icu libicu-devel"
 msgstr ""
 
-#: Ucp.class.php:134
+#: Ucp.class.php:129
 msgid ""
 "icu, pkg-config or pkgconf is not installed. You need to run: apt-get "
 "install icu libicu-devel pkg-config pkgconf"
@@ -1385,8 +1416,9 @@ msgstr "of"
 msgid "select template"
 msgstr ""
 
-#~ msgid "Admin"
-#~ msgstr "Admin"
+#: htdocs/assets/js/jquery-ui-1.13.2.min.js:6
+msgid "string"
+msgstr ""
 
 #~ msgid "Allow Password Changes"
 #~ msgstr "Sta Veranderen Wachtwoord Toe"
@@ -1408,19 +1440,14 @@ msgstr ""
 #~ "instelling leeg als je sessietokens voor altijd geldig wilt laten zijn "
 #~ "(Niet Aanbevolen)"
 
-#~ msgid ""
-#~ "The user control panel is a way for users to control call handling and "
-#~ "personal settings from a web browser."
-#~ msgstr ""
-#~ "Het User Control Panel is een manier voor gebruikers om het afhandelen "
-#~ "van telefoongesprekken en andere persoonlijke instellingen via de browser "
-#~ "te beheren."
-
 #~ msgid "UCP Session Timeout"
 #~ msgstr "UCP Sessie-Timeout"
 
 #~ msgid "The removal of this copyright notice is stricly prohibited"
 #~ msgstr "Het verwijderen van dit copyrightbericht is niet toegestaan"
+
+#~ msgid "There was an error trying to load UCP"
+#~ msgstr "Er is een fout opgetreden tijdens het laden van UCP"
 
 #~ msgid "User Control Panel is released as %s or newer"
 #~ msgstr "User Control Panel is gereleased als %s of nieuwer"

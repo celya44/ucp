@@ -11,7 +11,6 @@ var EventEmitter = require( "events" ).EventEmitter,
 		server = null,
 		serverS = null,
 		fs = require("fs"),
-		io = require("socket.io")(),
 		express = require('express'),
 		app = express(),
 		freepbx = {},
@@ -26,6 +25,15 @@ var EventEmitter = require( "events" ).EventEmitter,
 		key = '',
 		cert = '',
 		cabundle = '';
+
+const io = require("socket.io")({
+	cors: {
+		origin: true, 
+		methods: ["GET", "POST"],
+		credentials: true 
+	},
+	cookie: true
+});
 
 Server = function(fpbx) {
 	fpbx.server = this;
@@ -171,22 +179,25 @@ checkAuth = function(socket, next) {
 	suppliedToken = freepbx.db.escape(suppliedToken);
 	address = freepbx.db.escape(socket.handshake.address);
 	address = address.replace(/^::ffff:([\d]+\.)/, "$1"); //ipv4 mapped into ipv6
-	freepbx.db.query('SELECT * FROM ucp_sessions WHERE session = ? AND address = ?',[suppliedToken, address])
-		.on('data', function(row) {
-			freepbx.db.query('UPDATE ucp_sessions SET socketid = ? WHERE session = ? AND address = ?', [socket.id, suppliedToken, address]);
+	var prep = freepbx.db.prepare('SELECT * FROM ucp_sessions WHERE session = :session AND address = :address');
+	freepbx.db.queryStream(prep({ session: suppliedToken, address: address }))
+		.on('data', function (row) {
+			var prep = freepbx.db.prepare('UPDATE ucp_sessions SET socketid = :socketid WHERE session = :session AND address = :address');
+			var query = freepbx.db.queryStream(prep({ session: suppliedToken, address: address, socketid: socket.id }));
 			auth = true;
-		}).on('end', function() {
-			if (auth) {
-				console.log("Token [" + suppliedToken + "] from: " + address + " was accepted");
-				next();
-			} else {
-				console.log("Token [" + suppliedToken + "] from: " + address + " was rejected");
-				next(new Error("not authorized"));
-			}
-		}).on("error", function(e) {
-			console.log("Error while checking authorization?");
+		})
+		.on('end', function () {
+		if (auth) {
+			console.log("Token [" + suppliedToken + "] from: " + address + " was accepted");
+			next();
+		} else {
+			console.log("Token [" + suppliedToken + "] from: " + address + " was rejected");
 			next(new Error("not authorized"));
-		});
+		}
+	}).on("error", function(e) {
+		console.log("Error while checking authorization?");
+		next(new Error("not authorized"));
+	});
 };
 
 module.exports = Server;

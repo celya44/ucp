@@ -11,12 +11,13 @@
  * Copyright 2006-2014 Schmooze Com Inc.
  */
 namespace UCP;
+#[\AllowDynamicProperties]
 class Ajax extends UCP {
 
 	public $storage = 'null';
-	private $headers = array();
+	private array $headers = [];
 	//unused right now
-	public $settings = array( "authenticate" => true, "allowremote" => false );
+	public $settings = ["authenticate" => true, "allowremote" => false];
 
 	public function __construct($UCP) {
 		$this->UCP = $UCP;
@@ -28,34 +29,32 @@ class Ajax extends UCP {
 	}
 
 	public function doRequest($module = null, $command = null) {
-		session_write_close(); //speed up
+		$ret = null;
+  session_write_close(); //speed up
 		$this->UCP->Modgettext->textdomain("ucp");
 		
-		if (strpos($module, ".") !== false || strpos($command, ".") !== false) {
+		if (str_contains((string) $module, ".") || str_contains((string) $command, ".")) {
 			$this->triggerFatal(_("Module or Command requested invalid"));
 		}
 
 		switch($command) {
 			case 'template':
 				$this->UCP->Modgettext->push_textdomain("ucp");
-				$file = dirname(__DIR__).'/views/templates/'.basename($_REQUEST['type']).'.php';
-				if(ctype_alpha($_REQUEST['type']) && file_exists($file)) {
+				$file = dirname(__DIR__).'/views/templates/'.basename((string) $_REQUEST['type']).'.php';
+				if(ctype_alpha((string) $_REQUEST['type']) && file_exists($file)) {
 					$this->addHeader('HTTP/1.0','200');
 					$template = $_POST['template'];
 					if($_REQUEST['type'] == 'chat') {
 						$mods = $this->UCP->Modules->getModulesByMethod('getChatHistory');
-						$template['history'] = array();
+						$template['history'] = [];
 						foreach($mods as $m) {
-							$this->UCP->Modgettext->push_textdomain(strtolower($m));
+							$this->UCP->Modgettext->push_textdomain(strtolower((string) $m));
 							$template['history'] = $this->UCP->Modules->$m->getChatHistory($_POST['template']['from'],$_POST['template']['to'],$_POST['newWindow']);
 							$this->UCP->Modgettext->pop_textdomain();
 						}
 					}
 					$this->UCP->Modgettext->push_textdomain("ucp");
-					$ret = array(
-						"status" => true,
-						"contents" => $this->UCP->View->load_view($file, $template)
-					);
+					$ret = ["status" => true, "contents" => $this->UCP->View->load_view($file, $template)];
 					$this->UCP->Modgettext->pop_textdomain();
 				} else {
 					$this->triggerFatal();
@@ -69,12 +68,20 @@ class Ajax extends UCP {
 				}
 				$this->addHeader('HTTP/1.0','200');
 			break;
+			case 'fetchSettings':
+				try {
+					$ret = ['status' => true , 'ucpserver' => $this->UCP->getServerSettings()];
+				} catch (Exception $e){
+					$ret = ['status' => false, 'message' => 'There is an error fetching server settings: '.$e->getMessage()];
+				}
+				$this->addHeader('Content-Type', 'application/json');
+			break;
 			default:
 				if (!$module || !$command) {
 					$this->triggerFatal(_("Module or Command were null. Check your code."));
 				}
 
-				$ucMod = ucfirst(strtolower($module));
+				$ucMod = ucfirst(strtolower((string) $module));
 				if ($module != 'UCP' && $module != 'User' && class_exists(__NAMESPACE__."\\".$ucMod)) {
 					$this->triggerFatal(sprintf(_("The class %s already existed. Ajax MUST load it, for security reasons"),$module));
 				}
@@ -83,8 +90,8 @@ class Ajax extends UCP {
 				//TODO: security check
 				if($module == 'User' || $module == 'UCP' || $module == 'Dashboards') {
 					// Is someone trying to be tricky with filenames?
-					$file = dirname(__FILE__).'/'.$ucMod.'.class.php';
-					if((strpos($module, ".") !== false) || !file_exists($file)) {
+					$file = __DIR__.'/'.$ucMod.'.class.php';
+					if((str_contains((string) $module, ".")) || !file_exists($file)) {
 						$this->triggerFatal("Module requested invalid");
 					}
 
@@ -103,7 +110,7 @@ class Ajax extends UCP {
 					$this->ajaxError(501, 'ajaxRequest not found');
 				}
 
-				$this->UCP->Modgettext->push_textdomain(strtolower($module));
+				$this->UCP->Modgettext->push_textdomain(strtolower((string) $module));
 				if (!$thisModule->ajaxRequest($command, $this->settings)) {
 					$this->ajaxError(403, 'ajaxRequest declined');
 				}
@@ -150,19 +157,15 @@ class Ajax extends UCP {
 	public function poll() {
 		$modules = $this->UCP->Modules->getModulesByMethod('poll');
 		$modData = array();
-		if( !is_null($_POST['modulesInUse']) ){
-			foreach($modules as $module) {
-				if( in_array(strtolower($module),$_POST['modulesInUse'] ) ){
-					$mdata = !empty($_POST['data'][$module]) ? $_POST['data'][$module] : array();
-					$this->UCP->Modgettext->push_textdomain(strtolower($module));
-					if(!empty($mdata)) {
-						$modData[$module] = $this->UCP->Modules->$module->poll($mdata);
-					} else {
-						$modData[$module] = $this->UCP->Modules->$module->poll(array());
-					}
-					$this->UCP->Modgettext->pop_textdomain();
-				}
+		foreach($modules as $module) {
+			$mdata = !empty($_POST['data'][$module]) ? $_POST['data'][$module] : array();
+			$this->UCP->Modgettext->push_textdomain(strtolower($module));
+			if(!empty($mdata)) {
+				$modData[$module] = $this->UCP->Modules->$module->poll($mdata);
+			} else {
+				$modData[$module] = $this->UCP->Modules->$module->poll(array());
 			}
+			$this->UCP->Modgettext->pop_textdomain();
 		}
 		return array(
 			"status" => true,
