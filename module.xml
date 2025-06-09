@@ -12,6 +12,8 @@
   	<more-info>https://sangomakb.atlassian.net/wiki/spaces/PG/pages/38896213/User+Control+Panel+UCP</more-info>
 	<changelog>
 		*17.50.1* Initial Celya Release 
+		*17.0.4.25* Packaging of ver 17.0.4.25
+		*17.0.4.24* #136 UCP Tour - text error 
 		*17.0.4.22* bump 
 		*17.0.4.20* Github issue#19 Improving reset password email template 
 		*17.0.1* Initial Release
