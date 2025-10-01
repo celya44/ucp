@@ -16,7 +16,7 @@ if(!$PHPCASISINSTALLED){
 	exit(1);
 }
 // import phpCAS lib
-include_once('CAS/CAS.php');
+include_once(__DIR__ . '/../vendor/autoload.php');
 
 // Enable debugging
 //phpCAS::setDebug();
@@ -52,7 +52,7 @@ if ( isset($_REQUEST['logout']) ) {
 
 // Initialize phpCAS Client
 $relMethod = new ReflectionMethod('phpCAS','client');
-if ($relMethod->getNumberOfParameters() === 6){
+if ($relMethod->getNumberOfParameters() >= 6){
     phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context, $service_url);
 }else{
     phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context);
