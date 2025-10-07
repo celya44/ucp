@@ -28,16 +28,6 @@ $ldap_dn = $ucp->FreePBX->Config->get("UCPCASLDAPDN");
 $ldap_search = $ucp->FreePBX->Config->get("UCPCASLDAPSEARCH");
 $ldap_parameter = $ucp->FreePBX->Config->get("UCPCASLDAPPARAM");
 
-
-// Some small code triggered by the logout button
-if ( isset($_REQUEST['logout']) ) {
-    //phpCAS::logout();
-    session_start();
-    session_destroy();
-    header("Location: {$url_logout}");
-    die();
-}
-
 // Initialize phpCAS Client
 $relMethod = new ReflectionMethod('phpCAS','client');
 if ($relMethod->getNumberOfParameters() >= 6){
@@ -46,9 +36,21 @@ if ($relMethod->getNumberOfParameters() >= 6){
     phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context);
 }
 
+// Some small code triggered by the logout button
+if ( isset($_REQUEST['logout']) ) {
+    $userTmp = $ucp->User->getUser();
+    if($userTmp) {
+        $ucp->User->logout();
+    }
+    unset($userTmp);
+    session_start();
+    // Termine la session PHP et la session CAS
+    phpCAS::logout( [ 'url' => $url_logout ] );
+    die();
+}
+
 // L'URL de retour après identification sur le CAS
 phpCAS::setFixedServiceURL($url_ucp);
-
 
 // For quick testing you can disable SSL validation of the CAS server.
 // THIS SETTING IS NOT RECOMMENDED FOR PRODUCTION.
@@ -63,8 +65,6 @@ if ( ! phpCAS::checkAuthentication() ) {
     echo "<div style=\"text-align:center; padding-top:5em;\">Erreur identification CAS</div>";
     return;
 }
-
-
 
 $userLogin = phpCAS::getUser();
 
