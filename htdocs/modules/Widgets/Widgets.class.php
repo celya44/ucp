@@ -185,8 +185,10 @@ class Widgets extends Modules {
 	 * Send settings to UCP upon initalization
 	 */
 	function getStaticSettings() {
-		$isUserRestricted = $this->UCP->FreePBX->Userman->getCombinedModuleSettingByID($this->user['id'],'ucp|Global','isUserRestricted');
-		return [ 'isUserRestricted' => $isUserRestricted === '1' ? true : false ];
+	    if( $this->user ){
+    		$isUserRestricted = $this->UCP->FreePBX->Userman->getCombinedModuleSettingByID($this->user['id'],'ucp|Global','isUserRestricted');
+    		return [ 'isUserRestricted' => $isUserRestricted === '1' ? true : false ];
+	    }
 	}
 
 	public function getMenuItems() {
