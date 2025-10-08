@@ -134,7 +134,7 @@ $set['module'] = 'ucp'; //This will help delete the settings when module is unin
 $set['category'] = 'User Control Panel';
 $set['emptyok'] = 1;
 $set['name'] = 'UCP CAS Host';
-$set['description'] = 'UCP CAS Host';
+$set['description'] = 'UCP CAS Hostname (FQDN) or IP';
 $set['type'] = CONF_TYPE_TEXT;
 FreePBX::Config()->define_conf_setting('UCPCASHOST',$set,true);
 
@@ -152,6 +152,21 @@ $set['name'] = 'UCP CAS Port';
 $set['description'] = 'UCP CAS Port';
 $set['type'] = CONF_TYPE_TEXT;
 FreePBX::Config()->define_conf_setting('UCPCASPORT',$set,true);
+
+// UCPCASPATH
+$set['value'] = '/cas';
+$set['defaultval'] =& $set['value'];
+$set['readonly'] = 0;
+$set['hidden'] = 0;
+$set['level'] = 1;
+$set['sortorder'] = 400;
+$set['module'] = 'ucp'; //This will help delete the settings when module is uninstalled
+$set['category'] = 'User Control Panel';
+$set['emptyok'] = 1;
+$set['name'] = 'UCP CAS Path';
+$set['description'] = 'Path to access the CAS Server';
+$set['type'] = CONF_TYPE_TEXT;
+FreePBX::Config()->define_conf_setting('UCPCASPATH',$set,true);
 
 // UCPCASLDAP
 $set['value'] = '';
