@@ -350,8 +350,29 @@ class Ucp implements \BMO {
 					$sassigned = $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Settings','assigned');
 					$sassigned = !empty($sassigned) ? $sassigned : [];
 					$tempList = $this->Userman->getAllUcpTemplates();
-					return [["title" => "UCP", "rawname" => "ucp", "content" => load_view(__DIR__.'/views/users_hook.php',["mode" => $mode, "ausers" => $ausers, "sassigned" => $sassigned, "mHtml" => $this->constructModuleConfigPages('group',$group,$_REQUEST['action']), "user" => [], "allowLogin" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','allowLogin'), "originate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','originate'), "tourMode" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','tour'), "tempList" => $tempList, "assignedTemplate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|template','templateid'), "selectTemplate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|template','assigntemplate')]
-							)]];
+					return [
+					    [
+					        "title" => "UCP",
+					        "rawname" => "ucp",
+					        "content" => load_view(
+					            __DIR__.'/views/users_hook.php',
+					            [
+					                "mode" => $mode,
+					                "ausers" => $ausers,
+					                "sassigned" => $sassigned,
+					                "mHtml" => $this->constructModuleConfigPages('group',$group,$_REQUEST['action']),
+					                "user" => [],
+					                "allowLogin" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','allowLogin'),
+					                "originate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','originate'),
+					                "tourMode" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|Global','tour'),
+					                "tempList" => $tempList,
+					                "assignedTemplate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|template','templateid'),
+					                "selectTemplate" => $this->Userman->getModuleSettingByGID($_REQUEST['group'],'ucp|template','assigntemplate'),
+					                "isUserRestricted" => $this->Userman->getModuleSettingByGID($_REQUEST['group'], 'ucp|Global', 'isUserRestricted', true)
+					            ]
+							)
+					     ]
+					];
 				break;
 				case 'addgroup':
 					$ausers = ['self' => _("User Primary Extension")];
@@ -362,8 +383,27 @@ class Ucp implements \BMO {
 						}
 					}
 					$tempList = $this->Userman->getAllUcpTemplates();
-					return [["title" => "UCP", "rawname" => "ucp", "content" => load_view(__DIR__.'/views/users_hook.php',["mode" => $mode, "ausers" => $ausers, "sassigned" => ['self'], "mHtml" => $this->constructModuleConfigPages('group', [],$_REQUEST['action']), "user" => [], "allowLogin" => true, "originate" => false, "tourMode" => true, "selectTemplate" => false, "tempList" => $tempList]
-							)]];
+                    return [
+                        [
+                            "title" => "UCP",
+                            "rawname" => "ucp",
+                            "content" => load_view(__DIR__ . '/views/users_hook.php', [
+                                "mode" => $mode,
+                                "ausers" => $ausers,
+                                "sassigned" => [
+                                    'self'
+                                ],
+                                "mHtml" => $this->constructModuleConfigPages('group', [], $_REQUEST['action']),
+                                "user" => [],
+                                "allowLogin" => true,
+                                "originate" => false,
+                                "tourMode" => true,
+                                "selectTemplate" => false,
+                                "tempList" => $tempList,
+                                "isUserRestricted" => false
+                            ])
+                        ]
+                    ];
 				break;
 				case 'showuser':
 					$user = $this->getUserByID($_REQUEST['user']);
@@ -381,8 +421,27 @@ class Ucp implements \BMO {
 					}
 					$sassigned = !empty($sassigned) ? $sassigned : [];
 					$tempList = $this->Userman->getAllUcpTemplates();
-					return [["title" => "UCP", "rawname" => "ucp", "content" => load_view(__DIR__.'/views/users_hook.php',["mode" => $mode, "ausers" => $ausers, "sassigned" => $sassigned, "mHtml" => $this->constructModuleConfigPages('user',$user,$_REQUEST['action']), "user" => $user, "allowLogin" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','allowLogin',true), "originate" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','originate',true), "tourMode" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|Global','tour',true), "sessions" => $this->getUserSessions($user['id']), "tempList" => $tempList, "assignedTemplate" => $this->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|template','templateid',true), "selectTemplate" => $this->Userman->getModuleSettingByID($_REQUEST['user'],'ucp|template','assigntemplate',true)]
-							)]];
+					return [
+                        [
+                            "title" => "UCP",
+                            "rawname" => "ucp",
+                            "content" => load_view(__DIR__ . '/views/users_hook.php', [
+                                "mode" => $mode,
+                                "ausers" => $ausers,
+                                "sassigned" => $sassigned,
+                                "mHtml" => $this->constructModuleConfigPages('user', $user, $_REQUEST['action']),
+                                "user" => $user,
+                                "allowLogin" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|Global', 'allowLogin', true),
+                                "originate" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|Global', 'originate', true),
+                                "tourMode" => FreePBX::create()->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|Global', 'tour', true),
+                                "sessions" => $this->getUserSessions($user['id']),
+                                "tempList" => $tempList,
+                                "assignedTemplate" => $this->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|template', 'templateid', true),
+                                "selectTemplate" => $this->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|template', 'assigntemplate', true),
+                                "isUserRestricted" => $this->Userman->getModuleSettingByID($_REQUEST['user'], 'ucp|Global', 'isUserRestricted', true)
+                            ])
+                        ]
+                    ];
 				break;
 				case 'adduser':
 					$ausers = [];
@@ -393,8 +452,28 @@ class Ucp implements \BMO {
 						}
 					}
 					$tempList = $this->Userman->getAllUcpTemplates();
-					return [["title" => "UCP", "rawname" => "ucp", "content" => load_view(__DIR__.'/views/users_hook.php',["mode" => $mode, "ausers" => $ausers, "sassigned" => ['self'], "mHtml" => $this->constructModuleConfigPages('user',[],$_REQUEST['action']), "user" => [], "allowLogin" => null, "originate" => null, "tourMode" => null, "sessions" => [], "selectTemplate" => null, "tempList" => $tempList]
-							)]];
+					return [
+                        [
+                            "title" => "UCP",
+                            "rawname" => "ucp",
+                            "content" => load_view(__DIR__ . '/views/users_hook.php', [
+                                "mode" => $mode,
+                                "ausers" => $ausers,
+                                "sassigned" => [
+                                    'self'
+                                ],
+                                "mHtml" => $this->constructModuleConfigPages('user', [], $_REQUEST['action']),
+                                "user" => [],
+                                "allowLogin" => null,
+                                "originate" => null,
+                                "tourMode" => null,
+                                "sessions" => [],
+                                "selectTemplate" => null,
+                                "tempList" => $tempList,
+                                "isUserRestricted" => null
+                            ])
+                        ]
+                    ];
 				break;
 				default:
 				break;
