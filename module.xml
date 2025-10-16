@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>17.50.3</version>
+	<version>17.50.4</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,6 +11,7 @@
 	</description>
   	<more-info>https://sangomakb.atlassian.net/wiki/spaces/PG/pages/38896213/User+Control+Panel+UCP</more-info>
 	<changelog>
+		*17.50.4* 2025/10/16 Correctif pour les hooks lors de l'ajout et l'édition d'utilisateurs et groupes dans l'Userman
 		*17.50.3* 2025/10/08 Mis a jour du CAS
 		*17.50.2* 2025/06/09 Mis a jour du module
 		*17.0.4.25* Packaging of ver 17.0.4.25
