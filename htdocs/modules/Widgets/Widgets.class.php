@@ -60,73 +60,75 @@ class Widgets extends Modules {
 
 		if (!empty($widgets_info)) {
 			foreach ($widgets_info as $data) {
-				$widgetData = $widgets['widget'][ucfirst((string) $data->rawname)]['list'][$data->widget_type_id] ?? [];
-				$minsize    = '';
-				if (!empty($widgetData['minsize'])) {
-					if ($widgetData['minsize']['height'] > $widgetData['defaultsize']['height']) {
-						throw new \Exception("Minsize height is less than defaultsize height in " . $data->rawname . "!!");
+				if( array_key_exists( ucfirst((string) $data->rawname), $widgets['widget']) ){
+					$widgetData = $widgets['widget'][ucfirst((string) $data->rawname)]['list'][$data->widget_type_id] ?? [];
+					$minsize    = '';
+					if (!empty($widgetData['minsize'])) {
+						if ($widgetData['minsize']['height'] > $widgetData['defaultsize']['height']) {
+							throw new \Exception("Minsize height is less than defaultsize height in " . $data->rawname . "!!");
+						}
+						if ($widgetData['minsize']['width'] > $widgetData['defaultsize']['width']) {
+							throw new \Exception("Minsize width is less than defaultsize width in " . $data->rawname . "!!");
+						}
+						$minsize = 'data-gs-min-height="' . $widgetData['minsize']['height'] . '" data-gs-min-width="' . $widgetData['minsize']['width'] . '"';
 					}
-					if ($widgetData['minsize']['width'] > $widgetData['defaultsize']['width']) {
-						throw new \Exception("Minsize width is less than defaultsize width in " . $data->rawname . "!!");
+					$maxsize = '';
+					if (!empty($widgetData['maxsize'])) {
+						if ($widgetData['maxsize']['height'] < $widgetData['defaultsize']['height']) {
+							throw new \Exception("Maxsize height is greater than defaultsize height in " . $data->rawname . "!!");
+						}
+						if ($widgetData['maxsize']['width'] < $widgetData['defaultsize']['width']) {
+							throw new \Exception("Maxsize width is greater than defaultsize width in " . $data->rawname . "!!");
+						}
+						$maxsize = 'data-gs-max-height="' . $widgetData['maxsize']['height'] . '" data-gs-max-width="' . $widgetData['maxsize']['width'] . '"';
 					}
-					$minsize = 'data-gs-min-height="' . $widgetData['minsize']['height'] . '" data-gs-min-width="' . $widgetData['minsize']['width'] . '"';
-				}
-				$maxsize = '';
-				if (!empty($widgetData['maxsize'])) {
-					if ($widgetData['maxsize']['height'] < $widgetData['defaultsize']['height']) {
-						throw new \Exception("Maxsize height is greater than defaultsize height in " . $data->rawname . "!!");
+					$noresize = '';
+					if (!empty($widgetData['noresize'])) {
+						$noresize = 'data-gs-no-resize="true" data-no-resize="true"';
 					}
-					if ($widgetData['maxsize']['width'] < $widgetData['defaultsize']['width']) {
-						throw new \Exception("Maxsize width is greater than defaultsize width in " . $data->rawname . "!!");
+					$locked     = '';
+					$lockedIcon = 'fa-unlock-alt';
+					if (!empty($data->locked)) {
+						$locked     = 'data-gs-locked="true" data-gs-no-resize="true" data-gs-no-move="true"';
+						$lockedIcon = 'fa-lock';
 					}
-					$maxsize = 'data-gs-max-height="' . $widgetData['maxsize']['height'] . '" data-gs-max-width="' . $widgetData['maxsize']['width'] . '"';
-				}
-				$noresize = '';
-				if (!empty($widgetData['noresize'])) {
-					$noresize = 'data-gs-no-resize="true" data-no-resize="true"';
-				}
-				$locked     = '';
-				$lockedIcon = 'fa-unlock-alt';
-				if (!empty($data->locked)) {
-					$locked     = 'data-gs-locked="true" data-gs-no-resize="true" data-gs-no-move="true"';
-					$lockedIcon = 'fa-lock';
-				}
-				$iconClass     = !empty($widgetData['icon']) ? $widgetData['icon'] : $widgets['widget'][ucfirst((string) $data->rawname)]['icon'];
-				$settings_html = '';
-				if ($data->has_settings == 1) {
-					$settings_html = '<div class="widget-option edit-widget" data-widget_type_id="' . $data->widget_type_id . '" data-rawname="' . $data->rawname . '">
-												<i class="fa fa-cog" aria-hidden="true"></i>
-											</div>';
-				}
+					$iconClass     = !empty($widgetData['icon']) ? $widgetData['icon'] : $widgets['widget'][ucfirst((string) $data->rawname)]['icon'];
+					$settings_html = '';
+					if ($data->has_settings == 1) {
+						$settings_html = '<div class="widget-option edit-widget" data-widget_type_id="' . $data->widget_type_id . '" data-rawname="' . $data->rawname . '">
+													<i class="fa fa-cog" aria-hidden="true"></i>
+												</div>';
+					}
 
-				$regenuuid = '';
-				if (!preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i', (string) $data->id)) {
-					//TODO: need to mark that this happened
-					$data->id  = (string) Uuid::uuid4();
-					$regenuuid = 'data-regenuuid="true"';
-				}
+					$regenuuid = '';
+					if (!preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i', (string) $data->id)) {
+						//TODO: need to mark that this happened
+						$data->id  = (string) Uuid::uuid4();
+						$regenuuid = 'data-regenuuid="true"';
+					}
 
-				$html .= '<div class="grid-stack-item flip-container" ' . $maxsize . ' ' . $minsize . ' ' . $noresize . ' ' . $locked . ' ' . $regenuuid . ' data-gs-x="' . $data->size_x . '" data-gs-y="' . $data->size_y . '" data-gs-width="' . $data->col . '" data-gs-height="' . $data->row . '" data-widget_module_name="' . $data->widget_module_name . '" data-gs-id="' . $data->id . '" data-id="' . $data->id . '" data-name="' . $data->name . '" data-rawname="' . $data->rawname . '" data-widget_type_id="' . $data->widget_type_id . '" data-has_settings="' . $data->has_settings . '">';
+					$html .= '<div class="grid-stack-item flip-container" ' . $maxsize . ' ' . $minsize . ' ' . $noresize . ' ' . $locked . ' ' . $regenuuid . ' data-gs-x="' . $data->size_x . '" data-gs-y="' . $data->size_y . '" data-gs-width="' . $data->col . '" data-gs-height="' . $data->row . '" data-widget_module_name="' . $data->widget_module_name . '" data-gs-id="' . $data->id . '" data-id="' . $data->id . '" data-name="' . $data->name . '" data-rawname="' . $data->rawname . '" data-widget_type_id="' . $data->widget_type_id . '" data-has_settings="' . $data->has_settings . '">';
 
-				$html .= '<div class="grid-stack-item-content flipper">
-						<div class="front">
-							<div class="widget-title">
-								<div class="widget-module-name truncate-text"><i class="fa-fw ' . $iconClass . '"></i>' . $data->name . '</div>
-								<div class="widget-module-subname truncate-text">(' . $data->widget_module_name . ')</div>
-								<div class="widget-options">
-									<div class="widget-option remove-widget" data-widget_id="' . $data->id . '" data-widget_type_id="' . $data->widget_type_id . '" data-widget_rawname="' . $data->rawname . '">
-										<i class="fa fa-times" aria-hidden="true"></i>
-									</div>
-									' . $settings_html . '
-									<div class="widget-option lock-widget" data-widget_id="' . $data->id . '" data-widget_type_id="' . $data->widget_type_id . '" data-widget_rawname="' . $data->rawname . '">
-										<i class="fa ' . $lockedIcon . '" aria-hidden="true"></i>
+					$html .= '<div class="grid-stack-item-content flipper">
+							<div class="front">
+								<div class="widget-title">
+									<div class="widget-module-name truncate-text"><i class="fa-fw ' . $iconClass . '"></i>' . $data->name . '</div>
+									<div class="widget-module-subname truncate-text">(' . $data->widget_module_name . ')</div>
+									<div class="widget-options">
+										<div class="widget-option remove-widget" data-widget_id="' . $data->id . '" data-widget_type_id="' . $data->widget_type_id . '" data-widget_rawname="' . $data->rawname . '">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</div>
+										' . $settings_html . '
+										<div class="widget-option lock-widget" data-widget_id="' . $data->id . '" data-widget_type_id="' . $data->widget_type_id . '" data-widget_rawname="' . $data->rawname . '">
+											<i class="fa ' . $lockedIcon . '" aria-hidden="true"></i>
+										</div>
 									</div>
 								</div>
+								<div class="widget-content"></div>
 							</div>
-							<div class="widget-content"></div>
-						</div>
-				</div>';
-				$html .= '</div>';
+					</div>';
+					$html .= '</div>';
+				}
 			}
 		}
 		$html .= '</div></br>';
