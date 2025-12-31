@@ -107,13 +107,18 @@
 								<i class="fa fa-question-circle fpbx-help-icon" data-for="ucp_isUserRestricted"></i>
 							</div>
 							<div class="col-md-9 radioset">
-								<input type="radio" id="ucp_isUserRestricted_1" name="ucp_isUserRestricted" value="true" <?php echo ($isUserRestricted) ? 'checked' : ''?>>
-								<label for="ucp_isUserRestricted_1"><?php echo _("Yes")?></label>
-								<input type="radio" id="ucp_isUserRestricted_2" name="ucp_isUserRestricted" value="false" <?php echo (!is_null($isUserRestricted) && !$isUserRestricted) ? 'checked' : ''?>>
-								<label for="ucp_isUserRestricted_2"><?php echo _("No")?></label>
 								<?php if($mode == "user") {?>
+									<input type="radio" id="ucp_isUserRestricted_1" name="ucp_isUserRestricted" value="true" <?php echo ($isUserRestricted) ? 'checked' : ''?>>
+									<label for="ucp_isUserRestricted_1"><?php echo _("Yes")?></label>
+									<input type="radio" id="ucp_isUserRestricted_2" name="ucp_isUserRestricted" value="false" <?php echo (!is_null($isUserRestricted) && !$isUserRestricted) ? 'checked' : ''?>>
+									<label for="ucp_isUserRestricted_2"><?php echo _("No")?></label>
 									<input type="radio" id="ucp_isUserRestricted_3" name="ucp_isUserRestricted" value='inherit' <?php echo is_null($isUserRestricted) ? 'checked' : ''?>>
 									<label for="ucp_isUserRestricted_3"><?php echo _('Inherit')?></label>
+								<?php }else if($mode == "group" ) {?>
+									<input type="radio" id="ucp_isUserRestricted_1" name="ucp_isUserRestricted" value="true" <?php echo ($isUserRestricted) ? 'checked' : ''?>>
+									<label for="ucp_isUserRestricted_1"><?php echo _("Yes")?></label>
+									<input type="radio" id="ucp_isUserRestricted_2" name="ucp_isUserRestricted" value="false" <?php echo (!$isUserRestricted) ? 'checked' : ''?>>
+									<label for="ucp_isUserRestricted_2"><?php echo _("No")?></label>
 								<?php } ?>
 							</div>
 						</div>
