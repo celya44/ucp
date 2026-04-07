@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 08:53-0400\n"
+"POT-Creation-Date: 2025-11-04 01:57-0500\n"
 "PO-Revision-Date: 2017-03-12 17:22+0200\n"
 "Last-Translator: Nicolas <freepbx@riendeau.org>\n"
 "Language-Team: French <http://weblate.freepbx.org/projects/freepbx/ucp/fr_FR/"
@@ -368,7 +368,7 @@ msgstr ""
 msgid "Editing a Dashboard"
 msgstr ""
 
-#: htdocs/modules/Settings/views/settings.php:47 htdocs/views/login.php:38
+#: htdocs/modules/Settings/views/settings.php:47 htdocs/views/login.php:39
 msgid "Email"
 msgstr "Courriel"
 
@@ -441,7 +441,7 @@ msgstr "Premier"
 msgid "First Name"
 msgstr "Prénom"
 
-#: htdocs/views/login.php:46
+#: htdocs/views/login.php:47
 msgid "Forgot Password"
 msgstr "Mot de passe oublié"
 
@@ -531,7 +531,7 @@ msgstr "Invalide"
 msgid "Invalid Device"
 msgstr "Appareil invalide"
 
-#: htdocs/includes/User.class.php:119
+#: htdocs/includes/User.class.php:129
 msgid "Invalid Login Credentials"
 msgstr "Nom d'utilisateur ou mot de passe invalide"
 
@@ -559,13 +559,13 @@ msgstr "Dernier"
 msgid "Last Name"
 msgstr "Nom"
 
-#: htdocs/views/forgot.php:85 htdocs/views/login.php:68
+#: htdocs/views/forgot.php:85 htdocs/views/login.php:69
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: htdocs/views/forgot.php:67 htdocs/views/login.php:48
-#: htdocs/assets/js/ucp.js:329 htdocs/assets/js/ucp.js:351
-#: htdocs/assets/js/ucp.js:361
+#: htdocs/views/forgot.php:67 htdocs/views/login.php:49
+#: htdocs/views/login.php:86 htdocs/assets/js/ucp.js:357
+#: htdocs/assets/js/ucp.js:378 htdocs/assets/js/ucp.js:388
 msgid "Login"
 msgstr "Connexion"
 
@@ -679,7 +679,7 @@ msgid "PQRS"
 msgstr "PQRS"
 
 #: htdocs/modules/Settings/views/settings.php:25
-#: htdocs/modules/Settings/views/settings.php:27 htdocs/views/login.php:28
+#: htdocs/modules/Settings/views/settings.php:27 htdocs/views/login.php:29
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -701,7 +701,7 @@ msgstr ""
 msgid "Password has been changed!"
 msgstr "Le mot de passe a été changé !"
 
-#: htdocs/assets/js/ucp.js:290 htdocs/assets/js/ucp.js:344
+#: htdocs/assets/js/ucp.js:319 htdocs/assets/js/ucp.js:372
 msgid "Processing..."
 msgstr "Traitement en cours ..."
 
@@ -722,7 +722,7 @@ msgid "Refreshing all UCP Assets, this could take a while..."
 msgstr ""
 "Actualisation de tous les actifs, cela pourrait prendre un certain temps ..."
 
-#: htdocs/views/forgot.php:71 htdocs/views/login.php:52
+#: htdocs/views/forgot.php:71 htdocs/views/login.php:53
 msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
@@ -742,6 +742,11 @@ msgstr ""
 #: Ucp.class.php:1228
 #, php-format
 msgid "Running (Uptime: %s)"
+msgstr ""
+
+#: htdocs/includes/User.class.php:123
+msgid ""
+"SAML Single Sign-On is enabled for your account. Please sign in using SSO."
 msgstr ""
 
 #: htdocs/modules/Ucptour/assets/js/global.js:69
@@ -770,7 +775,7 @@ msgstr ""
 msgid "Selecting Widgets"
 msgstr ""
 
-#: htdocs/views/login.php:70
+#: htdocs/views/login.php:71
 msgid "Send Me A Password Reset Link"
 msgstr "Envoyez-moi un lien pour réinitialiser le mot de passe"
 
@@ -937,7 +942,7 @@ msgstr ""
 "Le mot de passe permettant de se connecter au panneau de l'utilisateur (UCP) "
 "et d'autres services"
 
-#: htdocs/assets/js/ucp.js:575
+#: htdocs/assets/js/ucp.js:601
 msgid "The session has expired and you are being forcibly logged out"
 msgstr ""
 
@@ -1078,7 +1083,7 @@ msgstr ""
 msgid "UCP is currently disabled. Please talk to your system Administrator"
 msgstr "UCP est actuellement désactivé. Contactez votre administrateur système"
 
-#: htdocs/assets/js/ucp.js:379
+#: htdocs/assets/js/ucp.js:405
 msgid "UCP is not supported in your browser"
 msgstr ""
 
@@ -1095,7 +1100,7 @@ msgstr ""
 "UCP, autrement connu comme le panneau de contrôle utilisateur, est une "
 "interface usager de FreePBX."
 
-#: htdocs/assets/js/ucp.js:488
+#: htdocs/assets/js/ucp.js:514
 #, perl-format
 msgid "Unable to connect to the UCP Node Server.<br>%s"
 msgstr ""
@@ -1310,7 +1315,7 @@ msgstr ""
 msgid "You must set a dashboard name!"
 msgstr ""
 
-#: htdocs/assets/js/ucp.js:366
+#: htdocs/assets/js/ucp.js:393
 msgid "Your Browser is unsupported at this time."
 msgstr "Votre navigateur n'est pas supporté pour le moment."
 
@@ -1358,7 +1363,7 @@ msgstr "Votre Titre"
 msgid "Your Work Number"
 msgstr "Votre numéro de téléphone professionel"
 
-#: htdocs/assets/js/ucp.js:368
+#: htdocs/assets/js/ucp.js:395
 msgid ""
 "Your browser is unsupported at this time. Please upgrade or talk to your "
 "system administrator"
@@ -1410,7 +1415,7 @@ msgid ""
 "install icu libicu-devel pkg-config pkgconf"
 msgstr ""
 
-#: htdocs/views/login.php:33
+#: htdocs/views/login.php:34
 msgid "or"
 msgstr "ou"
 

@@ -1,5 +1,5 @@
 <div class="row">
-	<div id="login-window" class="col-md-4 col-md-offset-3 col-sm-6 col-sm-offset-2 col-xs-8 col-xs-offset-1" style="<?php echo (!empty($error_warning) || !empty($error_danger)) ? 'height: 300px;' : ''?>">
+	<div id="login-window" class="col-md-4 col-md-offset-3 col-sm-6 col-sm-offset-2 col-xs-8 col-xs-offset-1" style="height: fit-content !important;<?php echo (!empty($error_warning) || !empty($error_danger)) ? 'height: fit-content;!important' : ''?>">
 		<form id="frm-login" method="POST" action="?display=dashboard">
 			<input type="hidden" name="token" value="<?php echo $token?>">
 			<h2 class="header text-center"><?php echo _('User Control Panel')?></h2>
@@ -15,6 +15,7 @@
 				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 				<input type="text" name="username" class="form-control" placeholder="<?php echo _('Username')?>" autocapitalize="off" autocorrect="off">
 			</div>
+			<div id="normalloginform">
 			<?php 
 				$lhideClass = 'lhide';
 				if($hideLogin) {
@@ -72,6 +73,17 @@
 						</tr>
 					</table>
 				</div>
+			</div>
+			</div>
+
+			<?php
+				if (\FreePBX::Modules()->checkStatus('pbxsaml') && \FreePBX::Pbxsaml()->isLicensed()) {
+					$webrootpath = \FreePBX::Config()->get('AMPWEBROOT');
+					include $webrootpath . '/admin/modules/pbxsaml/views/ucplogin.php';
+				}
+			?>
+			<div id="samlloginbtn" style="display:none;text-align: center;">
+				<button type="button" id="btn-saml" class="btn btn-default"><?php echo _('Login')?></button>
 			</div>
 		</form>
 		<div class="extra-info pull-left"><?php echo session_id()?></div>

@@ -2,7 +2,7 @@
 	<rawname>ucp</rawname>
 	<name>User Control Panel</name>
 	<repo>standard</repo>
-	<version>17.50.6</version>
+	<version>17.50.7</version>
 	<publisher>CELYA</publisher>
 	<license>AGPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/agpl-3.0.txt</licenselink>
@@ -11,6 +11,11 @@
 	</description>
   	<more-info>https://sangomakb.atlassian.net/wiki/spaces/PG/pages/38896213/User+Control+Panel+UCP</more-info>
 	<changelog>
+		*17.50.7* 2026/04/07 Mis a jour depuis le depot officiel
+		*17.0.4.31* #976: fix(node)-pin mariadb to ~3.4.5 for CommonJS compatibility 
+		*17.0.4.30* FREEI-2501 ucp test and login urls handled along with custom ports 
+		*17.0.4.29* Packaging of ver 17.0.4.29
+		*17.0.4.26* Packaging of ver 17.0.4.26
 		*17.50.6* 2025/12/31 Correctif pour le fonctionnement de l UCP lorsqu un module est desactive
 		*17.50.5* 2025/12/31 Correctif pour le parametre de restriction des droits UCP dans les groupes Userman
 		*17.50.4* 2025/10/16 Correctif pour les hooks lors de l'ajout et l'édition d'utilisateurs et groupes dans l'Userman
